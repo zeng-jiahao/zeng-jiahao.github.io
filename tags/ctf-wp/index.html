@@ -6,43 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>XSS-Lab刷题笔记 | ohou</title>
+  <title>Tag: ctf-wp | ohou</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="XSS-Lab刷题笔记靶场：BUUCTF上的XSS-Lab  XSS原理XSS通常指黑客通过“HTML注入”篡改网页，插入了恶意的脚本，从而在用户游览网页的时候控制用户游览器的一种攻击。XSS又分为反射型、储存型和DOM Based  0x00 level-01 收集信息，发现有一个GET变量~看源码  GET变量没有过滤就直接输出了在这里的GET变量只是一串普通的字符串，如果这里的GET变量的值">
-<meta property="og:type" content="article">
-<meta property="og:title" content="XSS-Lab刷题笔记">
-<meta property="og:url" content="http://example.com/2020/10/01/XSS-Lab%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/index.html">
+  <meta name="description" content="BUU在校大学生，小学曾获“三好学生”称号">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ohou">
+<meta property="og:url" content="http://example.com/tags/ctf-wp/index.html">
 <meta property="og:site_name" content="ohou">
-<meta property="og:description" content="XSS-Lab刷题笔记靶场：BUUCTF上的XSS-Lab  XSS原理XSS通常指黑客通过“HTML注入”篡改网页，插入了恶意的脚本，从而在用户游览网页的时候控制用户游览器的一种攻击。XSS又分为反射型、储存型和DOM Based  0x00 level-01 收集信息，发现有一个GET变量~看源码  GET变量没有过滤就直接输出了在这里的GET变量只是一串普通的字符串，如果这里的GET变量的值">
+<meta property="og:description" content="BUU在校大学生，小学曾获“三好学生”称号">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201001154620289.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201001160546523.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2020100116035556.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201001160725326.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201001161100135.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201001161750951.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201001164303497.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201001164446243.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201001165215745.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201001170923187.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201001171308953.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2020100117214674.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201001172538658.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2020100117291130.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201001173650591.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201001212844522.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2020100121303793.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201001213428781.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201001213726885.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201001213935682.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201001215233211.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201001221323917.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201001230305253.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
-<meta property="article:published_time" content="2020-10-01T15:09:11.000Z">
-<meta property="article:modified_time" content="2020-10-02T13:02:32.991Z">
 <meta property="article:author" content="zeng-jiahao">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20201001154620289.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
   
     <link rel="alternative" href="/atom.xml" title="ohou" type="application/atom+xml">
   
@@ -178,237 +152,75 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-XSS-Lab刷题笔记" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      XSS-Lab刷题笔记
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/09/27/bugkuctf-%E6%B1%9F%E6%B9%96%E8%80%81%E9%AD%94-wp/" class="archive-article-date">
+  	<time datetime="2020-09-27T09:52:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-27</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/09/27/bugkuctf-%E6%B1%9F%E6%B9%96%E8%80%81%E9%AD%94-wp/">bugkuctf-江湖老魔-wp</a>
     </h1>
   
 
-        
-        <a href="/2020/10/01/XSS-Lab%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2020-10-01T15:09:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="XSS-Lab刷题笔记"><a href="#XSS-Lab刷题笔记" class="headerlink" title="XSS-Lab刷题笔记"></a>XSS-Lab刷题笔记</h2><p>靶场：<a target="_blank" rel="noopener" href="https://buuoj.cn/challenges">BUUCTF上的XSS-Lab</a></p>
-<hr>
-<h3 id="XSS原理"><a href="#XSS原理" class="headerlink" title="XSS原理"></a>XSS原理</h3><p>XSS通常指黑客通过“HTML注入”篡改网页，插入了恶意的脚本，从而在用户游览网页的时候控制用户游览器的一种攻击。<br>XSS又分为反射型、储存型和DOM Based</p>
-<hr>
-<h3 id="0x00-level-01"><a href="#0x00-level-01" class="headerlink" title="0x00 level-01"></a>0x00 level-01</h3><p><img src="https://img-blog.csdnimg.cn/20201001154620289.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center"></p>
-<p>收集信息，发现有一个GET变量~看源码</p>
-<p><img src="https://img-blog.csdnimg.cn/20201001160546523.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>GET变量没有过滤就直接输出了<br>在这里的GET变量只是一串普通的字符串，如果这里的GET变量的值是一段恶意代码的话，游览器会先把在这段代码插入这个HTML界面中，然后用户再次打开这个界面时，就会把这个GET变量识别成为一段可执行的脚本代码来执行。<br>插入一段js代码看看：</p>
-<p><img src="https://img-blog.csdnimg.cn/2020100116035556.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>可以很清楚的看到，本来GET的值就是一段字符串，但是插入游览器后，就被游览器识别成为一段js代码。<br>换成一段弹窗代码。</p>
-<p><img src="https://img-blog.csdnimg.cn/20201001160725326.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>下一关~~</p>
-<hr>
-<h3 id="0x01-leve-02"><a href="#0x01-leve-02" class="headerlink" title="0x01 leve-02"></a>0x01 leve-02</h3><p>收集信息，看源码</p>
-<p><img src="https://img-blog.csdnimg.cn/20201001161100135.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>GET传参给一个input标签。<br>先闭合input标签，这样就可以使传入的恶意代码可以被游览器识别成为可执行脚本。<br>payload:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;&gt;&lt;script&gt;alert(1)&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ctf-wp</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/code//" class="article-tag-list-link color5">code</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
 
-<p><img src="https://img-blog.csdnimg.cn/20201001161750951.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p><em>知识点：闭合input标签，插入代码</em></p>
-<hr>
-<h3 id="0x02-level-03"><a href="#0x02-level-03" class="headerlink" title="0x02 level-03"></a>0x02 level-03</h3><p>收集信息~看源码</p>
-<p><img src="https://img-blog.csdnimg.cn/20201001164303497.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>但是这里有尖括号过滤</p>
-<p><img src="https://img-blog.csdnimg.cn/20201001164446243.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>所以就不能插入带标签的代码~因为标签都是带尖括号的，所以这里采用事件<br>先闭合value的属性，然后加入onclick事件。<br>payload：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#39; onclick&#x3D;&#39;alert(1)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20201001165215745.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>然后再点击一下输入框就可以直接执行事件咯。</p>
-<hr>
-<h3 id="0x03-level-04"><a href="#0x03-level-04" class="headerlink" title="0x03 level-04"></a>0x03 level-04</h3><p>看源码</p>
-<p><img src="https://img-blog.csdnimg.cn/20201001170923187.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>过滤了尖括号。事件注入~<br>payload：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot; onclick&#x3D;&quot;alert(1)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20201001171308953.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<hr>
-<h3 id="0x04-level-05"><a href="#0x04-level-05" class="headerlink" title="0x04 level-05"></a>0x04 level-05</h3><p>先试探防御机制，</p>
-<p><img src="https://img-blog.csdnimg.cn/2020100117214674.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>没有对尖括号进行过滤，但是对 <code>ri</code> 进行了处理变成了<code>r_i</code>，大写也一样会处理</p>
-<p><img src="https://img-blog.csdnimg.cn/20201001172538658.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>改用事件注入,发现对<code>onclick</code>进行了处理。</p>
-<p><img src="https://img-blog.csdnimg.cn/2020100117291130.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>把 <code>on</code> 改成了 <code>o_n </code>，因为所有事件都是带 on 的。<br>改用其他标签</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;&gt;&lt;a href&#x3D;&quot;javascript:alert(1)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20201001173650591.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>然后点击图片就会弹窗了。</p>
-<hr>
-<h3 id="0x05-level-06"><a href="#0x05-level-06" class="headerlink" title="0x05 level-06"></a>0x05 level-06</h3><p> 跟上题差不多，虽然没有过滤<code>尖括号</code>，但是对关键字<code>script</code>、<code>href</code>和<code>onclick</code>都进行了过滤处理。<br> 但是没有对大小写进行处理。<br>成功的payload：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot; ONCLICK&#x3D;&quot;alert(1)</span><br><span class="line">&quot;&gt;&lt;SCRIPT&gt;alert(1)&lt;&#x2F;SCRIPT&gt;</span><br><span class="line">&quot;&gt;&lt;a HREF&#x3D;&quot;javascript:alert(1)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="0x06-level-07"><a href="#0x06-level-07" class="headerlink" title="0x06 level-07"></a>0x06 level-07</h3><p>测试：没有过滤尖括号,但是在使用<code>script</code>标签的时候，直接就把<code>script</code>给挖走了,后面测试onclick和href也是一样被挖了。</p>
-<p><img src="https://img-blog.csdnimg.cn/20201001212844522.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>试试用嵌套的方法来绕过关键字检测。<br>payload：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;&gt;&lt;scscriptript&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/2020100121303793.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>挖走了中间的关键字，但是后面又形成一个新的<code>script</code>关键字<br>成功的payload：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;&gt;&lt;scscriptript&gt;alert(1)&lt;&#x2F;scscriptript&gt;</span><br><span class="line">&quot; oonnclick&#x3D;&quot;alert(1)</span><br><span class="line">&quot;&gt;&lt;a hrhrefef&#x3D;&quot;javascrscriptipt:alert(1)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20201001213428781.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20201001213726885.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20201001213935682.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>本关与上一关的不同，在于转换后的内容不同，虽然添加了大小写转换，但是因为转换后，字符被转换为空字符，所以转换后的字符如何仍可以组合成，那么就可以绕过该防御机制</p>
-<hr>
-<h3 id="0x07-level-08"><a href="#0x07-level-08" class="headerlink" title="0x07 level-08"></a>0x07 level-08</h3><p>在 <code>input标签</code> 里面对 <code>&lt;</code> 和 <code>&quot;</code> 进行了处理，然后对 <code>script</code> 也进行了处理。<br>所以就无法构建闭合，也无法进行事件注入。</p>
-<p><img src="https://img-blog.csdnimg.cn/20201001215233211.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>貌似只能对后面的链接标签下手。<br>采用html实体编码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java&amp;#x73;&amp;#x63;&amp;#x72;&amp;#x69;&amp;#x70;&amp;#x74;:alert(1)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20201001221323917.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>这一关基本过滤了所以关键字和大小写，所以采用html实体编码</p>
-<hr>
-<h3 id="0x08-level-09"><a href="#0x08-level-09" class="headerlink" title="0x08 level-09"></a>0x08 level-09</h3><p>这一关与上一关不同的是会在上一关的基础上，加入地址的检查，首先判断会检查哪些内容，这一关会检查输入的数据中是否会有http：//字段，所以需要在输入的字段中加入该字段,考虑到要使alert()函数能够正常执行，可以将<code>http://</code>用<code>//</code>注释掉然后放到语句后面，也可以直接放到alert()函数里面作为字符串参数。</p>
-<p><img src="https://img-blog.csdnimg.cn/20201001230305253.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>payload：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java&amp;#x73;&amp;#x63;&amp;#x72;&amp;#x69;&amp;#x70;&amp;#x74;:alert(&#39;http:&#x2F;&#x2F;&#39;)</span><br><span class="line">java&amp;#x73;&amp;#x63;&amp;#x72;&amp;#x69;&amp;#x70;&amp;#x74;:alert(1)&#x2F;&#x2F;http:&#x2F;&#x2F;</span><br></pre></td></tr></table></figure>
-
-<hr>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/10/01/XSS-Lab%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
   
   
-    <a href="/2020/09/27/bugkuctf-%E6%B1%9F%E6%B9%96%E8%80%81%E9%AD%94-wp/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">bugkuctf-江湖老魔-wp</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -431,9 +243,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
