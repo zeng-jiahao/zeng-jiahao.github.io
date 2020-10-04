@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200927171648509.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200927173547488.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
 <meta property="article:published_time" content="2020-09-27T09:52:04.000Z">
-<meta property="article:modified_time" content="2020-10-04T15:18:04.751Z">
+<meta property="article:modified_time" content="2020-10-04T15:48:49.501Z">
 <meta property="article:author" content="zeng-jiahao">
 <meta property="article:tag" content="ctf-wp">
 <meta property="article:tag" content="js">
@@ -184,6 +184,8 @@
       
         <h2 id="bugkuctf-江湖魔头-js代码审计"><a href="#bugkuctf-江湖魔头-js代码审计" class="headerlink" title="bugkuctf - 江湖魔头 - js代码审计"></a>bugkuctf - 江湖魔头 - js代码审计</h2><p>靶场地址：<a target="_blank" rel="noopener" href="http://123.206.31.85:1616/">江湖魔头</a></p>
 <p>   先收集信息，一款江湖类的小游戏，通过修行打败最后的boss就过关。<br> 按照正常的游戏规则在比赛前是不能修炼到如来神掌的~所以就要做外挂，直接开局就有钱学如来神掌。</p>
+<a id="more"></a>
+
 <p>先用御剑和dirsearch扫描URL发现没有可用的信息，源代码里面也无hint。</p>
 <p> 将地址栏后面的get变量去除，有个彩蛋~<br><img src="https://img-blog.csdnimg.cn/20200927161545138.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>检验KEY？搞不懂</p>
 <p>源文件里面有js代码查看js代码。<br> <img src="https://img-blog.csdnimg.cn/20200927161840911.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>三个js脚本，一个md5加密，一个base64加密，还有一个不知道，先看<code>script.js</code>吧。</p>
