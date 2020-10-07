@@ -188,44 +188,9 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">level10.php?t_link&#x3D;qqq&amp;t_history&#x3D;aaa&amp;t_sort&#x3D;sss</span><br></pre></td></tr></table></figure>
 
 <p>发现只有一个注入点。</p>
-<p><img src="https://img-blog.csdnimg.cn/20201004142044543.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center"></p>
-<p>过滤了<code>尖括号</code>，也就不能<code>js</code>注入了。但是可以用时间注入。</p>
-<p>Payload：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">level10.php?t_sort&#x3D;&quot; onclick&#x3D;&quot;alert(1)</span><br></pre></td></tr></table></figure>
-
-<p>但是因为 <code>t_sort</code> 的 <code>input</code> 标签的 <code>type</code> 的值是 <code>hidden</code> 是隐藏的，所以无法点击调用，这里得把 <code>type</code> 的值给改了。</p>
-<p>最终的Payload:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">level10.php?t_sort&#x3D;&quot; onclick&#x3D;&quot;alert(1)&quot; type&#x3D;&quot;text</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20201004143313207.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center"></p>
-<p>第一个 <code>type</code> 的值会直接吧后面的 <code>type</code> 的值给覆盖。然后就变成了一个可以点击输入的框。</p>
-<hr>
-<h3 id="0x01-level-11-Referer注入"><a href="#0x01-level-11-Referer注入" class="headerlink" title="0x01 level-11 Referer注入"></a>0x01 level-11 Referer注入</h3><p>跟上题一样，没有可以注入点，先把每个参数都试试，发现都不行。<br>记得开始的源码有一个比较奇怪的地方</p>
-<p><img src="https://img-blog.csdnimg.cn/20201004154338409.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center"></p>
-<p>这里的 <code>t_ref</code> 的值是上一个题目的 <code>地址+payload</code><br>猜测是有请求头 <code>Referer 请求地址</code> 的存在，看看html文件头部都有些啥吧。</p>
-<p><img src="https://img-blog.csdnimg.cn/2020100415484548.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center"></p>
-<p>果然！在请求头上有一个请求来源地址 <code>Referer</code> 这里就可以进行注入。</p>
-<p>Payload:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot; type&#x3D;&quot;text&quot; onclick&#x3D;&quot;alert(1)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20201004161512462.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center"></p>
-<hr>
-<h3 id="0x02-level-12-User-Agent注入"><a href="#0x02-level-12-User-Agent注入" class="headerlink" title="0x02 level-12 User-Agent注入"></a>0x02 level-12 User-Agent注入</h3><p>跟上题一样的思路，只不过换成了User-Agent的<br>payload也一样</p>
-<p><img src="https://img-blog.csdnimg.cn/20201004162149543.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center"></p>
-<hr>
-<h3 id="0x03-level-13-Cookies注入"><a href="#0x03-level-13-Cookies注入" class="headerlink" title="0x03 level-13 Cookies注入"></a>0x03 level-13 Cookies注入</h3><p>先看源码。先看看有没有注入点。<br><img src="https://img-blog.csdnimg.cn/20201006152006865.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center"></p>
-<p><code>t_sort</code> 标签有返回值，试试过滤不过滤  <code>&gt;</code> 和 <code>双引号</code><br><img src="https://img-blog.csdnimg.cn/20201006153738367.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center"></p>
-<p>发现都屏蔽了，无法标签注入和事件注入。<br>看消息头</p>
-<p><img src="https://img-blog.csdnimg.cn/20201007111955215.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center"><br><img src="https://img-blog.csdnimg.cn/20201007112216963.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center"></p>
-<p>由 <code>t_cook</code> 的值就是 <code>cookie</code> 的值，提交一个   <code>cookie</code> 试试，可以用<code>burp suite</code>，也可以用 <code>Hackbar</code>。<br>我用的是 <code>Hackbar</code>。可行，下面就应该是 改cookie，形成反射性XSS注入</p>
-<p>Payload：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cookies： user=<span class="string">&quot; onmouseover=&quot;</span>alert(1)<span class="string">&quot; type=&quot;</span>text</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdnimg.cn/20201007112724824.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center"></p>
-<hr>
-<h3 id="0x04-level-14-Exif注入"><a href="#0x04-level-14-Exif注入" class="headerlink" title="0x04 level-14 Exif注入"></a>0x04 level-14 Exif注入</h3><p>参考了网上的<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32393893/article/details/104814749">WP</a><br>Exif：<br>可交换图像文件格式（英语：Exchangeable image file format，官方简称Exif），是专门为数码相机的照片设定的，<code>可以记录数码照片的属性信息和拍摄数据。可使用鼠标右键进入属性页面查看部分信息</code>。<br>可以记录数据，然后又可以查看！如果在里面插入XSS攻击语句，点击查看时就可以运行XSS脚本，实现攻击！</p>
-<hr>
-
+        
+          <a class="article-more-a" href="/2020/10/07/XSS-Lab%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0-2/#more">more >></a>
+        
       
 
       
