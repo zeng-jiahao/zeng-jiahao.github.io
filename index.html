@@ -162,6 +162,301 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-进程同步-临界资源的分配算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/28/%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5-%E4%B8%B4%E7%95%8C%E8%B5%84%E6%BA%90%E7%9A%84%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95/">进程同步_临界资源的分配算法</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/28/%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5-%E4%B8%B4%E7%95%8C%E8%B5%84%E6%BA%90%E7%9A%84%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2020-10-28T06:21:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="生产者-消费者问题"><a href="#生产者-消费者问题" class="headerlink" title="生产者-消费者问题"></a>生产者-消费者问题</h2><p>描述的是：<br>一群生产者进程生产产品，并且将这些产品将提供给消费者进程消费。为了使生产者进程和消费者进程能并发执行，在两者之间设置了一个具有 n 个缓冲区的缓冲池。<br>缓冲池就是给来平衡生产和消费进程之间的同步问题。保证不过度生成和过度消费。</p>
+<h2 id="lt-–-more-–-gt"><a href="#lt-–-more-–-gt" class="headerlink" title="&lt;–! more –&gt;"></a>&lt;–! more –&gt;</h2><p>算法描述：利用数组buffer表示具有 n 个缓冲区的缓冲池，in表示存放产品的指针，out表示去除产品的指针。<br>存取操作时，in和out值的变化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">in &#x3D; (in + 1) % n ; out &#x3D; (out + 1) % n </span><br></pre></td></tr></table></figure>
+<p>当 <code>(in + 1) % n = out</code> 时表示缓冲池满，<code>in = out</code> 表示缓冲池空。</p>
+<h5 id="生产者和消费者两进程共享下面变量"><a href="#生产者和消费者两进程共享下面变量" class="headerlink" title="生产者和消费者两进程共享下面变量"></a>生产者和消费者两进程共享下面变量</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int in &#x3D; 0, out &#x3D; 0, count &#x3D; 0;</span><br><span class="line">item buffer[n];</span><br></pre></td></tr></table></figure>
+<p>in 和 out 初始化为 0 。生产者进程使用局部变量 nextp ,用于暂时存放每次刚产出的产品；消费者使用局部变量 nextc ,用于存放每次要消费的产品。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">void producer()&#123;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        produce an item nextp;</span><br><span class="line">        ···</span><br><span class="line">        while(counter &#x3D;&#x3D; n)</span><br><span class="line">        ;</span><br><span class="line">        buffer[in] &#x3D; nextp;</span><br><span class="line">        in &#x3D; (in + 1) % n;</span><br><span class="line">        counter++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void consumer()&#123;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        while(counter &#x3D;&#x3D; 0)</span><br><span class="line">        ;</span><br><span class="line">        nextc &#x3D; buffer[out];</span><br><span class="line">        out &#x3D; (out + 1) % n;</span><br><span class="line">        counter--;</span><br><span class="line">        consumer the item in nextc;</span><br><span class="line">        ···</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="counter变量访问控制"><a href="#counter变量访问控制" class="headerlink" title="counter变量访问控制"></a>counter变量访问控制</h4><p>由上面的算法可知，如果不控制好生产者和消费者对共享变量 counter 的访问就会出现差错。<br>下面例举生成者和消费者对 counter 的加 1 和减 1 操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">register1 &#x3D; counter;            register2 &#x3D; counter;</span><br><span class="line">register1 &#x3D; register1 + 1;      register2 &#x3D; register2 - 1;</span><br><span class="line">counter &#x3D; register1;            counter &#x3D; register2;</span><br></pre></td></tr></table></figure>
+
+<p>如果生产者消费者两进程并发执行，两个程序中的各个语句交叉执行。</p>
+<p>设 counter = 5</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">register1 &#x3D; counter;  </span><br><span class="line">register1 &#x3D; register1 + 1; </span><br><span class="line">register2 &#x3D; counter;</span><br><span class="line">register2 &#x3D; register2 - 1;</span><br><span class="line">counter &#x3D; register1; </span><br><span class="line">counter &#x3D; register2;</span><br></pre></td></tr></table></figure>
+
+<p>执行一次生产者进程和消费者进程后应该： <code>counter = 5</code><br>但是如果是上述交叉执行。 <code>counter = 4</code><br>所以为了解决这个问题，应该把变量 counter 作为临界资源处理。即生产者进程和消费者进程互斥的访问变量 counter</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">操作系统,进程,临界资源</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/28/%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5-%E4%B8%B4%E7%95%8C%E8%B5%84%E6%BA%90%E7%9A%84%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-XSS总结—利用XSS漏洞" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/21/XSS%E6%80%BB%E7%BB%93%E2%80%94%E5%88%A9%E7%94%A8XSS%E6%BC%8F%E6%B4%9E/">XSS总结—利用XSS漏洞</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/21/XSS%E6%80%BB%E7%BB%93%E2%80%94%E5%88%A9%E7%94%A8XSS%E6%BC%8F%E6%B4%9E/" class="archive-article-date">
+  	<time datetime="2020-10-21T06:10:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/21/XSS%E6%80%BB%E7%BB%93%E2%80%94%E5%88%A9%E7%94%A8XSS%E6%BC%8F%E6%B4%9E/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-XSS总结—发现XSS漏洞" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/21/XSS%E6%80%BB%E7%BB%93%E2%80%94%E5%8F%91%E7%8E%B0XSS%E6%BC%8F%E6%B4%9E/">XSS总结—发现XSS漏洞</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/21/XSS%E6%80%BB%E7%BB%93%E2%80%94%E5%8F%91%E7%8E%B0XSS%E6%BC%8F%E6%B4%9E/" class="archive-article-date">
+  	<time datetime="2020-10-21T06:10:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/21/XSS%E6%80%BB%E7%BB%93%E2%80%94%E5%8F%91%E7%8E%B0XSS%E6%BC%8F%E6%B4%9E/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-操作系统实验一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C%E4%B8%80/">操作系统实验一</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C%E4%B8%80/" class="archive-article-date">
+  	<time datetime="2020-10-18T04:47:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="实验一-实验环境的使用"><a href="#实验一-实验环境的使用" class="headerlink" title="实验一 实验环境的使用"></a>实验一 实验环境的使用</h2><hr>
+<h3 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">OS</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">课程实验</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C语言</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C%E4%B8%80/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-XSS-Lab刷题笔记-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -545,6 +840,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">OS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">课程实验</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C语言</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">操作系统,进程,临界资源</a>
               </li>
             
             <div class="clearfix"></div>

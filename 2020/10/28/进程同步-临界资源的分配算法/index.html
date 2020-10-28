@@ -6,16 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Tag: ctf-wp | ohou</title>
+  <title>进程同步_临界资源的分配算法 | ohou</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="BUU在校大学生，小学曾获“三好学生”称号">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ohou">
-<meta property="og:url" content="http://example.com/tags/ctf-wp/index.html">
+  <meta name="description" content="生产者-消费者问题描述的是：一群生产者进程生产产品，并且将这些产品将提供给消费者进程消费。为了使生产者进程和消费者进程能并发执行，在两者之间设置了一个具有 n 个缓冲区的缓冲池。缓冲池就是给来平衡生产和消费进程之间的同步问题。保证不过度生成和过度消费。 &lt;–! more –&gt;算法描述：利用数组buffer表示具有 n 个缓冲区的缓冲池，in表示存放产品的指针，out表示去除产品的指针。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="进程同步_临界资源的分配算法">
+<meta property="og:url" content="http://example.com/2020/10/28/%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5-%E4%B8%B4%E7%95%8C%E8%B5%84%E6%BA%90%E7%9A%84%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="ohou">
-<meta property="og:description" content="BUU在校大学生，小学曾获“三好学生”称号">
+<meta property="og:description" content="生产者-消费者问题描述的是：一群生产者进程生产产品，并且将这些产品将提供给消费者进程消费。为了使生产者进程和消费者进程能并发执行，在两者之间设置了一个具有 n 个缓冲区的缓冲池。缓冲池就是给来平衡生产和消费进程之间的同步问题。保证不过度生成和过度消费。 &lt;–! more –&gt;算法描述：利用数组buffer表示具有 n 个缓冲区的缓冲池，in表示存放产品的指针，out表示去除产品的指针。">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-28T06:21:13.000Z">
+<meta property="article:modified_time" content="2020-10-28T07:42:35.127Z">
 <meta property="article:author" content="zeng-jiahao">
+<meta property="article:tag" content="操作系统,进程,临界资源">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="ohou" type="application/atom+xml">
@@ -160,181 +163,192 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-进程同步-临界资源的分配算法" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      进程同步_临界资源的分配算法
+    </h1>
+  
+
+        
+        <a href="/2020/10/28/%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5-%E4%B8%B4%E7%95%8C%E8%B5%84%E6%BA%90%E7%9A%84%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2020-10-28T06:21:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-28</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="生产者-消费者问题"><a href="#生产者-消费者问题" class="headerlink" title="生产者-消费者问题"></a>生产者-消费者问题</h2><p>描述的是：<br>一群生产者进程生产产品，并且将这些产品将提供给消费者进程消费。为了使生产者进程和消费者进程能并发执行，在两者之间设置了一个具有 n 个缓冲区的缓冲池。<br>缓冲池就是给来平衡生产和消费进程之间的同步问题。保证不过度生成和过度消费。</p>
+<h2 id="lt-–-more-–-gt"><a href="#lt-–-more-–-gt" class="headerlink" title="&lt;–! more –&gt;"></a>&lt;–! more –&gt;</h2><p>算法描述：利用数组buffer表示具有 n 个缓冲区的缓冲池，in表示存放产品的指针，out表示去除产品的指针。<br>存取操作时，in和out值的变化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">in &#x3D; (in + 1) % n ; out &#x3D; (out + 1) % n </span><br></pre></td></tr></table></figure>
+<p>当 <code>(in + 1) % n = out</code> 时表示缓冲池满，<code>in = out</code> 表示缓冲池空。</p>
+<h5 id="生产者和消费者两进程共享下面变量"><a href="#生产者和消费者两进程共享下面变量" class="headerlink" title="生产者和消费者两进程共享下面变量"></a>生产者和消费者两进程共享下面变量</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int in &#x3D; 0, out &#x3D; 0, count &#x3D; 0;</span><br><span class="line">item buffer[n];</span><br></pre></td></tr></table></figure>
+<p>in 和 out 初始化为 0 。生产者进程使用局部变量 nextp ,用于暂时存放每次刚产出的产品；消费者使用局部变量 nextc ,用于存放每次要消费的产品。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">void producer()&#123;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        produce an item nextp;</span><br><span class="line">        ···</span><br><span class="line">        while(counter &#x3D;&#x3D; n)</span><br><span class="line">        ;</span><br><span class="line">        buffer[in] &#x3D; nextp;</span><br><span class="line">        in &#x3D; (in + 1) % n;</span><br><span class="line">        counter++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void consumer()&#123;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        while(counter &#x3D;&#x3D; 0)</span><br><span class="line">        ;</span><br><span class="line">        nextc &#x3D; buffer[out];</span><br><span class="line">        out &#x3D; (out + 1) % n;</span><br><span class="line">        counter--;</span><br><span class="line">        consumer the item in nextc;</span><br><span class="line">        ···</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="counter变量访问控制"><a href="#counter变量访问控制" class="headerlink" title="counter变量访问控制"></a>counter变量访问控制</h4><p>由上面的算法可知，如果不控制好生产者和消费者对共享变量 counter 的访问就会出现差错。<br>下面例举生成者和消费者对 counter 的加 1 和减 1 操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">register1 &#x3D; counter;            register2 &#x3D; counter;</span><br><span class="line">register1 &#x3D; register1 + 1;      register2 &#x3D; register2 - 1;</span><br><span class="line">counter &#x3D; register1;            counter &#x3D; register2;</span><br></pre></td></tr></table></figure>
+
+<p>如果生产者消费者两进程并发执行，两个程序中的各个语句交叉执行。</p>
+<p>设 counter = 5</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">register1 &#x3D; counter;  </span><br><span class="line">register1 &#x3D; register1 + 1; </span><br><span class="line">register2 &#x3D; counter;</span><br><span class="line">register2 &#x3D; register2 - 1;</span><br><span class="line">counter &#x3D; register1; </span><br><span class="line">counter &#x3D; register2;</span><br></pre></td></tr></table></figure>
+
+<p>执行一次生产者进程和消费者进程后应该： <code>counter = 5</code><br>但是如果是上述交叉执行。 <code>counter = 4</code><br>所以为了解决这个问题，应该把变量 counter 作为临界资源处理。即生产者进程和消费者进程互斥的访问变量 counter</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wexinpay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/07/XSS-Lab%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0-2/" class="archive-article-date">
-  	<time datetime="2020-10-07T05:46:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/07/XSS-Lab%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0-2/">XSS_Lab刷题笔记-2</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ctf-wp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">XSS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">操作系统,进程,临界资源</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/codes//" class="article-tag-list-link color1">codes</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/10/28/%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5-%E4%B8%B4%E7%95%8C%E8%B5%84%E6%BA%90%E7%9A%84%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/01/XSS-Lab%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2020-10-01T15:09:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-01</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/10/21/XSS%E6%80%BB%E7%BB%93%E2%80%94%E5%88%A9%E7%94%A8XSS%E6%BC%8F%E6%B4%9E/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">XSS总结—利用XSS漏洞</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/01/XSS-Lab%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">XSS-Lab刷题笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ctf-wp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">XSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/codes//" class="article-tag-list-link color1">codes</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/09/27/bugkuctf-%E6%B1%9F%E6%B9%96%E8%80%81%E9%AD%94-wp/" class="archive-article-date">
-  	<time datetime="2020-09-27T09:52:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/09/27/bugkuctf-%E6%B1%9F%E6%B9%96%E8%80%81%E9%AD%94-wp/">bugkuctf-江湖老魔-wp</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ctf-wp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/code//" class="article-tag-list-link color5">code</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -357,9 +371,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
