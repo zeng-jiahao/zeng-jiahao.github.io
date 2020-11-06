@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>文件上传：DVWA和Upload_Labs | ohou</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="文件上传：DVWA和Upload_Labs DVWA_Uploadlow_level直接上传php木马。 medium_level修改Content-Type: image&#x2F;png high_level看源码分析">
+  <meta name="description" content="文件上传：DVWA和Upload_LabsDVWA_Uploadlow_level直接上传php木马。 medium_level修改Content-Type: image&#x2F;png high_level看源码分析">
 <meta property="og:type" content="article">
 <meta property="og:title" content="文件上传：DVWA和Upload_Labs">
 <meta property="og:url" content="http://example.com/2020/11/06/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%EF%BC%9ADVWA%E5%92%8CUpload-Labs/index.html">
 <meta property="og:site_name" content="ohou">
-<meta property="og:description" content="文件上传：DVWA和Upload_Labs DVWA_Uploadlow_level直接上传php木马。 medium_level修改Content-Type: image&#x2F;png high_level看源码分析">
+<meta property="og:description" content="文件上传：DVWA和Upload_LabsDVWA_Uploadlow_level直接上传php木马。 medium_level修改Content-Type: image&#x2F;png high_level看源码分析">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20201104195708297.png#pic_center">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20201104195807405.png#pic_center">
@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20201106150121602.png#pic_center">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20201106145841172.png#pic_center">
 <meta property="article:published_time" content="2020-11-06T07:19:57.000Z">
-<meta property="article:modified_time" content="2020-11-06T07:37:06.754Z">
+<meta property="article:modified_time" content="2020-11-06T07:38:08.956Z">
 <meta property="article:author" content="zeng-jiahao">
 <meta property="article:tag" content="文件上传">
 <meta property="article:tag" content="WriteUp">
@@ -198,8 +198,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="文件上传：DVWA和Upload-Labs"><a href="#文件上传：DVWA和Upload-Labs" class="headerlink" title="文件上传：DVWA和Upload_Labs"></a>文件上传：DVWA和Upload_Labs</h2><hr>
-<h3 id="DVWA-Upload"><a href="#DVWA-Upload" class="headerlink" title="DVWA_Upload"></a>DVWA_Upload</h3><h4 id="low-level"><a href="#low-level" class="headerlink" title="low_level"></a>low_level</h4><p>直接上传php木马。</p>
+        <h2 id="文件上传：DVWA和Upload-Labs"><a href="#文件上传：DVWA和Upload-Labs" class="headerlink" title="文件上传：DVWA和Upload_Labs"></a>文件上传：DVWA和Upload_Labs</h2><h3 id="DVWA-Upload"><a href="#DVWA-Upload" class="headerlink" title="DVWA_Upload"></a>DVWA_Upload</h3><h4 id="low-level"><a href="#low-level" class="headerlink" title="low_level"></a>low_level</h4><p>直接上传php木马。</p>
 <h4 id="medium-level"><a href="#medium-level" class="headerlink" title="medium_level"></a>medium_level</h4><p>修改Content-Type: image/png</p>
 <h4 id="high-level"><a href="#high-level" class="headerlink" title="high_level"></a>high_level</h4><p>看源码分析</p>
 <a id="more"></a>
@@ -215,7 +214,6 @@
 <p><img src="https://img-blog.csdnimg.cn/20201104195708297.png#pic_center"></p>
 <p>cmd手动制作图片马：</p>
 <p><img src="https://img-blog.csdnimg.cn/20201104195807405.png#pic_center"></p>
-<hr>
 <h3 id="Upload-Labs-总结"><a href="#Upload-Labs-总结" class="headerlink" title="Upload_Labs 总结"></a>Upload_Labs 总结</h3><h4 id="pass01：js-绕过"><a href="#pass01：js-绕过" class="headerlink" title="pass01：js 绕过"></a>pass01：js 绕过</h4><p>方法：（1）抓包修改；（2）修改 js 代码</p>
 <h4 id="pass02：content-type"><a href="#pass02：content-type" class="headerlink" title="pass02：content-type"></a>pass02：content-type</h4><p>方法：抓包修改 content-type 的值为 image/png、image/jpeg、image/gif</p>
 <h4 id="pass03：黑名单不全"><a href="#pass03：黑名单不全" class="headerlink" title="pass03：黑名单不全"></a>pass03：黑名单不全</h4><p>方法：可以上传文件扩展名为 .phtml .php3 等的文件，此类文件依旧可以被服务器解析成为php 文件。</p>
