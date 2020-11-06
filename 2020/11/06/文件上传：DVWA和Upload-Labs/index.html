@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20201106150121602.png#pic_center">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20201106145841172.png#pic_center">
 <meta property="article:published_time" content="2020-11-06T07:19:57.000Z">
-<meta property="article:modified_time" content="2020-11-06T07:30:55.627Z">
+<meta property="article:modified_time" content="2020-11-06T07:35:51.985Z">
 <meta property="article:author" content="zeng-jiahao">
 <meta property="article:tag" content="文件上传">
 <meta property="article:tag" content="WriteUp">
@@ -216,8 +216,7 @@
 <p>cmd手动制作图片马：</p>
 <p><img src="https://img-blog.csdnimg.cn/20201104195807405.png#pic_center"></p>
 <hr>
-<h3 id="Upload-Labs-总结"><a href="#Upload-Labs-总结" class="headerlink" title="Upload_Labs 总结"></a>Upload_Labs 总结</h3><hr>
-<h4 id="pass01：js-绕过"><a href="#pass01：js-绕过" class="headerlink" title="pass01：js 绕过"></a>pass01：js 绕过</h4><p>方法：（1）抓包修改；（2）修改 js 代码</p>
+<h3 id="Upload-Labs-总结"><a href="#Upload-Labs-总结" class="headerlink" title="Upload_Labs 总结"></a>Upload_Labs 总结</h3><h4 id="pass01：js-绕过"><a href="#pass01：js-绕过" class="headerlink" title="pass01：js 绕过"></a>pass01：js 绕过</h4><p>方法：（1）抓包修改；（2）修改 js 代码</p>
 <h4 id="pass02：content-type"><a href="#pass02：content-type" class="headerlink" title="pass02：content-type"></a>pass02：content-type</h4><p>方法：抓包修改 content-type 的值为 image/png、image/jpeg、image/gif</p>
 <h4 id="pass03：黑名单不全"><a href="#pass03：黑名单不全" class="headerlink" title="pass03：黑名单不全"></a>pass03：黑名单不全</h4><p>方法：可以上传文件扩展名为 .phtml .php3 等的文件，此类文件依旧可以被服务器解析成为php 文件。</p>
 <h4 id="pass04：忽略了-htaccess配置文件的上传问题。"><a href="#pass04：忽略了-htaccess配置文件的上传问题。" class="headerlink" title="pass04：忽略了.htaccess配置文件的上传问题。"></a>pass04：忽略了.htaccess配置文件的上传问题。</h4><p>方法：上传.htaccess配置文件，修改同一目录下的文件解析配置。使apache访问与其同一目录下的图片类文件时将图片类文件也解析成 php 文件。</p>
