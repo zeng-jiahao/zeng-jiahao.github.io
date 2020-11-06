@@ -162,6 +162,90 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-文件上传：DVWA和Upload-Labs" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/06/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%EF%BC%9ADVWA%E5%92%8CUpload-Labs/">文件上传：DVWA和Upload_Labs</a>
+    </h1>
+  
+
+        
+        <a href="/2020/11/06/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%EF%BC%9ADVWA%E5%92%8CUpload-Labs/" class="archive-article-date">
+  	<time datetime="2020-11-06T07:19:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="文件上传：DVWA和Upload-Labs"><a href="#文件上传：DVWA和Upload-Labs" class="headerlink" title="文件上传：DVWA和Upload_Labs"></a>文件上传：DVWA和Upload_Labs</h2><hr>
+<h3 id="DVWA-Upload"><a href="#DVWA-Upload" class="headerlink" title="DVWA_Upload"></a>DVWA_Upload</h3><h4 id="low-level"><a href="#low-level" class="headerlink" title="low_level"></a>low_level</h4><p>直接上传php木马。</p>
+<h4 id="medium-level"><a href="#medium-level" class="headerlink" title="medium_level"></a>medium_level</h4><p>修改Content-Type: image/png</p>
+<h4 id="high-level"><a href="#high-level" class="headerlink" title="high_level"></a>high_level</h4><p>看源码分析</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//截取文件扩展名</span><br><span class="line"><span class="variable">$uploaded_ext</span>  = substr( <span class="variable">$uploaded_name</span>, strrpos( <span class="variable">$uploaded_name</span>, <span class="string">&#x27;.&#x27;</span> ) + 1);</span><br><span class="line">//检验文件合法性</span><br><span class="line"><span class="keyword">if</span>( ( strtolower( <span class="variable">$uploaded_ext</span> ) == <span class="string">&quot;jpg&quot;</span> || strtolower( <span class="variable">$uploaded_ext</span> ) == <span class="string">&quot;jpeg&quot;</span> || strtolower( <span class="variable">$uploaded_ext</span> ) == <span class="string">&quot;png&quot;</span> ) &amp;&amp;</span><br><span class="line">        ( <span class="variable">$uploaded_size</span> &lt; 100000 ) &amp;&amp;</span><br><span class="line">        getimagesize( <span class="variable">$uploaded_tmp</span> ) )</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2020/11/06/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%EF%BC%9ADVWA%E5%92%8CUpload-Labs/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">文件上传</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">WriteUp</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/11/06/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%EF%BC%9ADVWA%E5%92%8CUpload-Labs/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2-4-进程同步" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -727,6 +811,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">进程同步</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件上传</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">WriteUp</a>
               </li>
             
             <div class="clearfix"></div>
