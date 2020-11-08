@@ -17,7 +17,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20201108161134465.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
 <meta property="article:published_time" content="2020-11-08T12:26:28.000Z">
-<meta property="article:modified_time" content="2020-11-08T12:28:34.877Z">
+<meta property="article:modified_time" content="2020-11-08T13:33:05.738Z">
 <meta property="article:author" content="zeng-jiahao">
 <meta property="article:tag" content="ctf-wp">
 <meta property="article:tag" content="upload">
@@ -190,6 +190,8 @@
 <p>Think PHP 的默认文件上传路径是 /home/index/upload<br>Think PHP 中的 upload() 函数在没有参数传入的情况下是可以批量上传文件的</p>
 </blockquote>
 <h4 id="源码分析："><a href="#源码分析：" class="headerlink" title="源码分析："></a>源码分析：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$uploadFile</span> = <span class="variable">$_FILES</span>[<span class="string">&#x27;file&#x27;</span>] ;</span><br><span class="line"><span class="keyword">if</span> (strstr(strtolower(<span class="variable">$uploadFile</span>[<span class="string">&#x27;name&#x27;</span>]), <span class="string">&quot;.php&quot;</span>) ) &#123;</span><br><span class="line">    <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
 
 <p>只会对文件名为 <code>file</code> 的上传文件进行扩展名的检验。但是对其他文件名的上传文件不会进行扩展名检验。</p>
 <p>原题中：</p>
