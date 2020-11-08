@@ -8,25 +8,24 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>BUUCTF-Upload-01 | ohou</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="BUU UPLOAD COURSE从页面源代码可以知道有一个文件包含的漏洞 1&lt;form action&#x3D;&quot;index.php?file&#x3D;upload.php&quot; method&#x3D;&quot;post&quot; enctype&#x3D;&quot;multipart&#x2F;form-data&quot;&gt;  先上传一个图片马，然后包含图片马试试。显然图片马被重命名的扩展名也变了。但是">
+  <meta name="description" content="### BUU UPLOAD COURSE 从页面源代码可以知道有一个文件包含的漏洞  1&lt;form action&#x3D;&quot;index.php?file&#x3D;upload.php&quot; method&#x3D;&quot;post&quot; enctype&#x3D;&quot;multipart&#x2F;form-data&quot;&gt;  先上传一个图片马，然后包含图片马试试。显然图片马被重命名的扩展">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BUUCTF-Upload-01">
 <meta property="og:url" content="http://example.com/2020/11/07/BUUCTF-Upload/index.html">
 <meta property="og:site_name" content="ohou">
-<meta property="og:description" content="BUU UPLOAD COURSE从页面源代码可以知道有一个文件包含的漏洞 1&lt;form action&#x3D;&quot;index.php?file&#x3D;upload.php&quot; method&#x3D;&quot;post&quot; enctype&#x3D;&quot;multipart&#x2F;form-data&quot;&gt;  先上传一个图片马，然后包含图片马试试。显然图片马被重命名的扩展名也变了。但是">
+<meta property="og:description" content="### BUU UPLOAD COURSE 从页面源代码可以知道有一个文件包含的漏洞  1&lt;form action&#x3D;&quot;index.php?file&#x3D;upload.php&quot; method&#x3D;&quot;post&quot; enctype&#x3D;&quot;multipart&#x2F;form-data&quot;&gt;  先上传一个图片马，然后包含图片马试试。显然图片马被重命名的扩展">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20201107150235587.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20201107160251378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20201107162009368.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20201107192047110.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/2020110719233291.png#pic_center">
 <meta property="article:published_time" content="2020-11-07T06:43:11.000Z">
-<meta property="article:modified_time" content="2020-11-08T06:19:16.647Z">
+<meta property="article:modified_time" content="2020-11-08T06:28:29.468Z">
 <meta property="article:author" content="zeng-jiahao">
 <meta property="article:tag" content="ctf-wp">
 <meta property="article:tag" content="upload">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20201107150235587.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20201107160251378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
   
     <link rel="alternative" href="/atom.xml" title="ohou" type="application/atom+xml">
   
@@ -190,16 +189,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="BUU-UPLOAD-COURSE"><a href="#BUU-UPLOAD-COURSE" class="headerlink" title="BUU UPLOAD COURSE"></a>BUU UPLOAD COURSE</h3><p>从页面源代码可以知道有一个文件包含的漏洞</p>
+        <br>
+### BUU UPLOAD COURSE
+从页面源代码可以知道有一个文件包含的漏洞
+
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">&quot;index.php?file=upload.php&quot;</span> method=<span class="string">&quot;post&quot;</span> enctype=<span class="string">&quot;multipart/form-data&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
 
 <p>先上传一个图片马，然后包含图片马试试。<br>显然图片马被重命名的扩展名也变了。但是不妨碍打开它。<br>成功</p>
 <a id="more"></a>
+<br>
+### [极客大挑战 2019]Upload
+测试时发现可以上传 `.phtml文件` 和文件内容不能含有 `<?` 
+![](https://img-blog.csdnimg.cn/20201107150235587.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center)
+访问 `info.phtml`。
 
-<h3 id="极客大挑战-2019-Upload"><a href="#极客大挑战-2019-Upload" class="headerlink" title="[极客大挑战 2019]Upload"></a>[极客大挑战 2019]Upload</h3><p>测试时发现可以上传 <code>.phtml文件</code> 和文件内容不能含有 <code>&lt;?</code><br><img src="https://img-blog.csdnimg.cn/20201107150235587.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center"><br>访问 <code>info.phtml</code>。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://2dc69a31-ef8e-4683-8e36-96235b32a56b.node3.buuoj.cn/upload/info.phtml</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://2dc69a31-ef8e-4683-8e36-96235b32a56b.node3.buuoj.cn/upload/info.phtml</span><br></pre></td></tr></table>
 <p>成功</p>
-<h3 id="SUCTF-2019-CheckIn"><a href="#SUCTF-2019-CheckIn" class="headerlink" title="[SUCTF 2019]CheckIn"></a>[SUCTF 2019]CheckIn</h3><p>测试发现，不能上传有文件扩展名中有<code>ph</code>字符串的文件，可以上传<code>.htaccess</code>文件，但是用到了<code>exif_imagetype()</code>函数来检查文件的格式。因为<code>.htaccess</code>文件格式非常严格，所以也用不了。</p>
+<br>
+### [SUCTF 2019]CheckIn
+
+<p>测试发现，不能上传有文件扩展名中有<code>ph</code>字符串的文件，可以上传<code>.htaccess</code>文件，但是用到了<code>exif_imagetype()</code>函数来检查文件的格式。因为<code>.htaccess</code>文件格式非常严格，所以也用不了。</p>
 <h4 id="user-ini-与-htaccess"><a href="#user-ini-与-htaccess" class="headerlink" title=".user.ini.与.htaccess"></a>.user.ini.与.htaccess</h4><p><strong>.htaccess</strong></p>
 <p>仅能用于apache下，并且内容严格，不能有错误行，如：GIF89a</p>
 <p><strong>.user.ini</strong></p>
@@ -224,13 +233,19 @@
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$extension</span> = substr(<span class="variable">$name</span>, strrpos(<span class="variable">$name</span>, <span class="string">&quot;.&quot;</span>) + 1);</span><br><span class="line">    <span class="keyword">if</span> (preg_match(<span class="string">&quot;/ph|htacess/i&quot;</span>, <span class="variable">$extension</span>)) &#123;</span><br><span class="line">        die(<span class="string">&quot;illegal suffix!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (mb_strpos(file_get_contents(<span class="variable">$tmp_name</span>), <span class="string">&quot;&lt;?&quot;</span>) !== FALSE) &#123;</span><br><span class="line">        die(<span class="string">&quot;&amp;lt;? in contents!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">$image_type</span> = exif_imagetype(<span class="variable">$tmp_name</span>);</span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable">$image_type</span>) &#123;</span><br><span class="line">        die(<span class="string">&quot;exif_imagetype:not image!&quot;</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="ACTF2020-新生赛-Upload"><a href="#ACTF2020-新生赛-Upload" class="headerlink" title="[ACTF2020 新生赛]Upload"></a>[ACTF2020 新生赛]Upload</h3><p><strong>JS检验+黑名单漏洞</strong></p>
+<br>
+### [ACTF2020 新生赛]Upload
+
+<p><strong>JS检验+黑名单漏洞</strong></p>
 <p>前端有一个<code>checkFile()</code>的JS函数检验上传文件的扩展名，修改一下绕过。<br>burp suite黑盒发现可以上传 <code>.phtml</code> 文件。<br>直接上传图片马，burp suite 抓包改后缀为 <code>.phtml</code> ，成功。</p>
 <p>看源码</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$file_name</span> = <span class="variable">$_FILES</span>[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;name&#x27;</span>];</span><br><span class="line"><span class="variable">$ext</span> = pathinfo(<span class="variable">$file_name</span>,PATHINFO_EXTENSION);</span><br><span class="line"><span class="keyword">if</span>(in_array(<span class="variable">$ext</span>, [<span class="string">&#x27;php&#x27;</span>, <span class="string">&#x27;php3&#x27;</span>, <span class="string">&#x27;php4&#x27;</span>, <span class="string">&#x27;php5&#x27;</span>])) &#123;</span><br><span class="line">    <span class="built_in">exit</span>(<span class="string">&#x27;nonono~ Bad file！&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>显然就是黑名单不全面。</p>
-<h3 id="GXYCTF2019-BabyUpload"><a href="#GXYCTF2019-BabyUpload" class="headerlink" title="[GXYCTF2019]BabyUpload"></a>[GXYCTF2019]BabyUpload</h3><p>考点：</p>
+<br>
+### [GXYCTF2019]BabyUpload
+
+<p>考点：</p>
 <blockquote>
 <p><code>content-type</code>检验<br><code>&lt;?</code> 的检验<br><code>.htaccess</code>配置文件的上传</p>
 </blockquote>
@@ -238,7 +253,11 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(preg_match(<span class="string">&quot;/ph/i&quot;</span>, strtolower(<span class="variable">$uploaded_ext</span>)))&#123;</span><br><span class="line">        die(<span class="string">&quot;后缀名不能有ph！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (((<span class="variable">$_FILES</span>[<span class="string">&quot;uploaded&quot;</span>][<span class="string">&quot;type&quot;</span>] == <span class="string">&quot;</span></span><br><span class="line"><span class="string">            &quot;</span>) || (<span class="variable">$_FILES</span>[<span class="string">&quot;uploaded&quot;</span>][<span class="string">&quot;type&quot;</span>] == <span class="string">&quot;image/jpeg&quot;</span>) || (<span class="variable">$_FILES</span>[<span class="string">&quot;uploaded&quot;</span>][<span class="string">&quot;type&quot;</span>] == <span class="string">&quot;image/pjpeg&quot;</span>)) &amp;&amp; (<span class="variable">$_FILES</span>[<span class="string">&quot;uploaded&quot;</span>][<span class="string">&quot;size&quot;</span>] &lt; 2048))&#123;</span><br><span class="line">            <span class="variable">$content</span> = file_get_contents(<span class="variable">$uploaded_tmp</span>);</span><br><span class="line">            <span class="keyword">if</span>(preg_match(<span class="string">&quot;/\&lt;\?/i&quot;</span>, <span class="variable">$content</span>))&#123;</span><br><span class="line">                die(<span class="string">&quot;诶，别蒙我啊，这标志明显还是php啊&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                mkdir(iconv(<span class="string">&quot;UTF-8&quot;</span>, <span class="string">&quot;GBK&quot;</span>, <span class="variable">$target_path</span>), 0777, <span class="literal">true</span>);</span><br><span class="line">                move_uploaded_file(<span class="variable">$uploaded_tmp</span>, <span class="variable">$t_path</span>);</span><br><span class="line">                <span class="built_in">echo</span> <span class="string">&quot;&#123;<span class="variable">$t_path</span>&#125; succesfully uploaded!&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            die(<span class="string">&quot;上传类型也太露骨了吧！&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 <p>正则匹配了 后缀名（不能包含 <code>ph</code> ）、文件内容不能有 <code>&lt;?</code> 和 <code>content-type</code> 检验</p>
-<h3 id="MRCTF2020-你传你🐎呢"><a href="#MRCTF2020-你传你🐎呢" class="headerlink" title="[MRCTF2020]你传你🐎呢"></a>[MRCTF2020]你传你🐎呢</h3><p>上传 <code>.htaccess</code> 配置文件<br>上传图片马</p>
+<br>
+### [MRCTF2020]你传你🐎呢
+
+<p>上传 <code>.htaccess</code> 配置文件</p>
+<p>上传图片马</p>
 
       
 
@@ -386,7 +405,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#BUU-UPLOAD-COURSE"><span class="toc-number">1.</span> <span class="toc-text">BUU UPLOAD COURSE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Upload"><span class="toc-number">2.</span> <span class="toc-text">[极客大挑战 2019]Upload</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SUCTF-2019-CheckIn"><span class="toc-number">3.</span> <span class="toc-text">[SUCTF 2019]CheckIn</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#user-ini-%E4%B8%8E-htaccess"><span class="toc-number">3.1.</span> <span class="toc-text">.user.ini.与.htaccess</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Upload"><span class="toc-number">4.</span> <span class="toc-text">[ACTF2020 新生赛]Upload</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GXYCTF2019-BabyUpload"><span class="toc-number">5.</span> <span class="toc-text">[GXYCTF2019]BabyUpload</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MRCTF2020-%E4%BD%A0%E4%BC%A0%E4%BD%A0%F0%9F%90%8E%E5%91%A2"><span class="toc-number">6.</span> <span class="toc-text">[MRCTF2020]你传你🐎呢</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#user-ini-%E4%B8%8E-htaccess"><span class="toc-number">1.</span> <span class="toc-text">.user.ini.与.htaccess</span></a></li></ol>
                     </div>
                 </span>
             </div>
