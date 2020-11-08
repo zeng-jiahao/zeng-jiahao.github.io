@@ -6,17 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>ohou</title>
+  <title>BUUCTF-Upload-01 | ohou</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="BUU在校大学生，小学曾获“三好学生”称号">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ohou">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="BUU UPLOAD COURSE从页面源代码可以知道有一个文件包含的漏洞 1&lt;form action&#x3D;&quot;index.php?file&#x3D;upload.php&quot; method&#x3D;&quot;post&quot; enctype&#x3D;&quot;multipart&#x2F;form-data&quot;&gt;  先上传一个图片马，然后包含图片马试试。显然图片马被重命名的扩展名也变了。但是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BUUCTF-Upload-01">
+<meta property="og:url" content="http://example.com/2020/11/07/BUUCTF-Upload/index.html">
 <meta property="og:site_name" content="ohou">
-<meta property="og:description" content="BUU在校大学生，小学曾获“三好学生”称号">
+<meta property="og:description" content="BUU UPLOAD COURSE从页面源代码可以知道有一个文件包含的漏洞 1&lt;form action&#x3D;&quot;index.php?file&#x3D;upload.php&quot; method&#x3D;&quot;post&quot; enctype&#x3D;&quot;multipart&#x2F;form-data&quot;&gt;  先上传一个图片马，然后包含图片马试试。显然图片马被重命名的扩展名也变了。但是">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201107150235587.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201107160251378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201107162009368.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201107192047110.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020110719233291.png#pic_center">
+<meta property="article:published_time" content="2020-11-07T06:43:11.000Z">
+<meta property="article:modified_time" content="2020-11-08T06:19:16.647Z">
 <meta property="article:author" content="zeng-jiahao">
+<meta property="article:tag" content="ctf-wp">
+<meta property="article:tag" content="upload">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20201107150235587.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center">
   
     <link rel="alternative" href="/atom.xml" title="ohou" type="application/atom+xml">
   
@@ -160,16 +170,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-BUUCTF-Upload" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-BUUCTF-Upload" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/07/BUUCTF-Upload/">BUUCTF-Upload-01</a>
+    <h1 class="article-title" itemprop="name">
+      BUUCTF-Upload-01
     </h1>
   
 
@@ -186,11 +194,85 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">&quot;index.php?file=upload.php&quot;</span> method=<span class="string">&quot;post&quot;</span> enctype=<span class="string">&quot;multipart/form-data&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
 
 <p>先上传一个图片马，然后包含图片马试试。<br>显然图片马被重命名的扩展名也变了。但是不妨碍打开它。<br>成功</p>
-        
-          <a class="article-more-a" href="/2020/11/07/BUUCTF-Upload/#more">more >></a>
-        
+<a id="more"></a>
+
+<h3 id="极客大挑战-2019-Upload"><a href="#极客大挑战-2019-Upload" class="headerlink" title="[极客大挑战 2019]Upload"></a>[极客大挑战 2019]Upload</h3><p>测试时发现可以上传 <code>.phtml文件</code> 和文件内容不能含有 <code>&lt;?</code><br><img src="https://img-blog.csdnimg.cn/20201107150235587.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center"><br>访问 <code>info.phtml</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://2dc69a31-ef8e-4683-8e36-96235b32a56b.node3.buuoj.cn/upload/info.phtml</span><br></pre></td></tr></table></figure>
+<p>成功</p>
+<h3 id="SUCTF-2019-CheckIn"><a href="#SUCTF-2019-CheckIn" class="headerlink" title="[SUCTF 2019]CheckIn"></a>[SUCTF 2019]CheckIn</h3><p>测试发现，不能上传有文件扩展名中有<code>ph</code>字符串的文件，可以上传<code>.htaccess</code>文件，但是用到了<code>exif_imagetype()</code>函数来检查文件的格式。因为<code>.htaccess</code>文件格式非常严格，所以也用不了。</p>
+<h4 id="user-ini-与-htaccess"><a href="#user-ini-与-htaccess" class="headerlink" title=".user.ini.与.htaccess"></a>.user.ini.与.htaccess</h4><p><strong>.htaccess</strong></p>
+<p>仅能用于apache下，并且内容严格，不能有错误行，如：GIF89a</p>
+<p><strong>.user.ini</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20201107160251378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center"></p>
+<p>网上对这个的分析有很多我就不复述了。下面是参考的链接<br><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/6091#toc-1">https://xz.aliyun.com/t/6091#toc-1</a></p>
+<p><strong>利用条件：</strong></p>
+<blockquote>
+<p>1.服务器脚本语言为PHP<br>2.apache，iis，nginx都可以，只要服务器使用CGI／FastCGI模式<br>3.上传目录下要有可执行的php文件</p>
+</blockquote>
+<p>上传一个<code>.user.ini</code>，配合 <code>auto_prepend_file</code> 或者 <code>auto_append_file</code> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GIF89a</span><br><span class="line">auto_prepend_file=zjh.jpg</span><br></pre></td></tr></table></figure>
+
+<p>大概意思时：指定一个 <code>zjh.jpg</code> 文件，在执行某个php文件时会先把 <code>zjh.jpg</code> 包含到这个 php文件前面。</p>
+<p><img src="https://img-blog.csdnimg.cn/20201107162009368.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center"></p>
+<p>再上传图片马 <code>zjh.jpg</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20201107192047110.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center"></p>
+<p>只要访问 <code>index.php</code> 脚本就会先把  <code>zjh.jpg</code> 包含进去。<br>用蚁剑连接成功。</p>
+<p><img src="https://img-blog.csdnimg.cn/2020110719233291.png#pic_center"></p>
+<p>看源码发现用了</p>
+<blockquote>
+<p>正则做 黑名单 。（出题人<code>.htaccess</code>少打了一个 c ）<br>对 <code>&lt;?</code> 做了检测<br>用<code>exif_imagetype()</code>函数检验图片的正确性</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$extension</span> = substr(<span class="variable">$name</span>, strrpos(<span class="variable">$name</span>, <span class="string">&quot;.&quot;</span>) + 1);</span><br><span class="line">    <span class="keyword">if</span> (preg_match(<span class="string">&quot;/ph|htacess/i&quot;</span>, <span class="variable">$extension</span>)) &#123;</span><br><span class="line">        die(<span class="string">&quot;illegal suffix!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (mb_strpos(file_get_contents(<span class="variable">$tmp_name</span>), <span class="string">&quot;&lt;?&quot;</span>) !== FALSE) &#123;</span><br><span class="line">        die(<span class="string">&quot;&amp;lt;? in contents!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable">$image_type</span> = exif_imagetype(<span class="variable">$tmp_name</span>);</span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable">$image_type</span>) &#123;</span><br><span class="line">        die(<span class="string">&quot;exif_imagetype:not image!&quot;</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ACTF2020-新生赛-Upload"><a href="#ACTF2020-新生赛-Upload" class="headerlink" title="[ACTF2020 新生赛]Upload"></a>[ACTF2020 新生赛]Upload</h3><p><strong>JS检验+黑名单漏洞</strong></p>
+<p>前端有一个<code>checkFile()</code>的JS函数检验上传文件的扩展名，修改一下绕过。<br>burp suite黑盒发现可以上传 <code>.phtml</code> 文件。<br>直接上传图片马，burp suite 抓包改后缀为 <code>.phtml</code> ，成功。</p>
+<p>看源码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$file_name</span> = <span class="variable">$_FILES</span>[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;name&#x27;</span>];</span><br><span class="line"><span class="variable">$ext</span> = pathinfo(<span class="variable">$file_name</span>,PATHINFO_EXTENSION);</span><br><span class="line"><span class="keyword">if</span>(in_array(<span class="variable">$ext</span>, [<span class="string">&#x27;php&#x27;</span>, <span class="string">&#x27;php3&#x27;</span>, <span class="string">&#x27;php4&#x27;</span>, <span class="string">&#x27;php5&#x27;</span>])) &#123;</span><br><span class="line">    <span class="built_in">exit</span>(<span class="string">&#x27;nonono~ Bad file！&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>显然就是黑名单不全面。</p>
+<h3 id="GXYCTF2019-BabyUpload"><a href="#GXYCTF2019-BabyUpload" class="headerlink" title="[GXYCTF2019]BabyUpload"></a>[GXYCTF2019]BabyUpload</h3><p>考点：</p>
+<blockquote>
+<p><code>content-type</code>检验<br><code>&lt;?</code> 的检验<br><code>.htaccess</code>配置文件的上传</p>
+</blockquote>
+<p>看源码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(preg_match(<span class="string">&quot;/ph/i&quot;</span>, strtolower(<span class="variable">$uploaded_ext</span>)))&#123;</span><br><span class="line">        die(<span class="string">&quot;后缀名不能有ph！&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (((<span class="variable">$_FILES</span>[<span class="string">&quot;uploaded&quot;</span>][<span class="string">&quot;type&quot;</span>] == <span class="string">&quot;</span></span><br><span class="line"><span class="string">            &quot;</span>) || (<span class="variable">$_FILES</span>[<span class="string">&quot;uploaded&quot;</span>][<span class="string">&quot;type&quot;</span>] == <span class="string">&quot;image/jpeg&quot;</span>) || (<span class="variable">$_FILES</span>[<span class="string">&quot;uploaded&quot;</span>][<span class="string">&quot;type&quot;</span>] == <span class="string">&quot;image/pjpeg&quot;</span>)) &amp;&amp; (<span class="variable">$_FILES</span>[<span class="string">&quot;uploaded&quot;</span>][<span class="string">&quot;size&quot;</span>] &lt; 2048))&#123;</span><br><span class="line">            <span class="variable">$content</span> = file_get_contents(<span class="variable">$uploaded_tmp</span>);</span><br><span class="line">            <span class="keyword">if</span>(preg_match(<span class="string">&quot;/\&lt;\?/i&quot;</span>, <span class="variable">$content</span>))&#123;</span><br><span class="line">                die(<span class="string">&quot;诶，别蒙我啊，这标志明显还是php啊&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                mkdir(iconv(<span class="string">&quot;UTF-8&quot;</span>, <span class="string">&quot;GBK&quot;</span>, <span class="variable">$target_path</span>), 0777, <span class="literal">true</span>);</span><br><span class="line">                move_uploaded_file(<span class="variable">$uploaded_tmp</span>, <span class="variable">$t_path</span>);</span><br><span class="line">                <span class="built_in">echo</span> <span class="string">&quot;&#123;<span class="variable">$t_path</span>&#125; succesfully uploaded!&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            die(<span class="string">&quot;上传类型也太露骨了吧！&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>正则匹配了 后缀名（不能包含 <code>ph</code> ）、文件内容不能有 <code>&lt;?</code> 和 <code>content-type</code> 检验</p>
+<h3 id="MRCTF2020-你传你🐎呢"><a href="#MRCTF2020-你传你🐎呢" class="headerlink" title="[MRCTF2020]你传你🐎呢"></a>[MRCTF2020]你传你🐎呢</h3><p>上传 <code>.htaccess</code> 配置文件<br>上传图片马</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wexinpay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -214,16 +296,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/11/07/BUUCTF-Upload/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/11/07/BUUCTF-Upload/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/11/06/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%EF%BC%9ADVWA%E5%92%8CUpload-Labs/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">文件上传：DVWA和Upload_Labs</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -238,543 +379,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-文件上传：DVWA和Upload-Labs" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/06/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%EF%BC%9ADVWA%E5%92%8CUpload-Labs/">文件上传：DVWA和Upload_Labs</a>
-    </h1>
-  
-
-        
-        <a href="/2020/11/06/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%EF%BC%9ADVWA%E5%92%8CUpload-Labs/" class="archive-article-date">
-  	<time datetime="2020-11-06T07:19:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h3 id="DVWA-Upload"><a href="#DVWA-Upload" class="headerlink" title="DVWA_Upload"></a>DVWA_Upload</h3><h4 id="low-level"><a href="#low-level" class="headerlink" title="low_level"></a>low_level</h4><p>直接上传php木马。</p>
-<h4 id="medium-level"><a href="#medium-level" class="headerlink" title="medium_level"></a>medium_level</h4><p>修改Content-Type: image/png</p>
-<h4 id="high-level"><a href="#high-level" class="headerlink" title="high_level"></a>high_level</h4><p>看源码分析</p>
-        
-          <a class="article-more-a" href="/2020/11/06/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%EF%BC%9ADVWA%E5%92%8CUpload-Labs/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ctf-wp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">文件上传</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/11/06/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%EF%BC%9ADVWA%E5%92%8CUpload-Labs/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#BUU-UPLOAD-COURSE"><span class="toc-number">1.</span> <span class="toc-text">BUU UPLOAD COURSE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-2019-Upload"><span class="toc-number">2.</span> <span class="toc-text">[极客大挑战 2019]Upload</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SUCTF-2019-CheckIn"><span class="toc-number">3.</span> <span class="toc-text">[SUCTF 2019]CheckIn</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#user-ini-%E4%B8%8E-htaccess"><span class="toc-number">3.1.</span> <span class="toc-text">.user.ini.与.htaccess</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ACTF2020-%E6%96%B0%E7%94%9F%E8%B5%9B-Upload"><span class="toc-number">4.</span> <span class="toc-text">[ACTF2020 新生赛]Upload</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GXYCTF2019-BabyUpload"><span class="toc-number">5.</span> <span class="toc-text">[GXYCTF2019]BabyUpload</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MRCTF2020-%E4%BD%A0%E4%BC%A0%E4%BD%A0%F0%9F%90%8E%E5%91%A2"><span class="toc-number">6.</span> <span class="toc-text">[MRCTF2020]你传你🐎呢</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
   
-    <article id="post-2-4-进程同步" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/04/2-4-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/">2.4-进程同步</a>
-    </h1>
   
 
-        
-        <a href="/2020/11/04/2-4-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/" class="archive-article-date">
-  	<time datetime="2020-11-04T09:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="进程同步-小笔记"><a href="#进程同步-小笔记" class="headerlink" title="进程同步-小笔记"></a>进程同步-小笔记</h2><h4 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h4><p>为了保证进程能有条不紊的运行，在多道程序系统中必须引入进程同步机制来保证程序执行的可再现性。</p>
-<h4 id="进程同步机制："><a href="#进程同步机制：" class="headerlink" title="进程同步机制："></a>进程同步机制：</h4><p>硬件同步机制、信号量机制和管程机制等。</p>
-<h4 id="基本概念："><a href="#基本概念：" class="headerlink" title="基本概念："></a>基本概念：</h4><h2 id="对多个程序进行执行次序上的协调，按照一定的规则或者时序来共享系统资源，从而使程序的执行具有可再现性。"><a href="#对多个程序进行执行次序上的协调，按照一定的规则或者时序来共享系统资源，从而使程序的执行具有可再现性。" class="headerlink" title="对多个程序进行执行次序上的协调，按照一定的规则或者时序来共享系统资源，从而使程序的执行具有可再现性。"></a>对多个程序进行执行次序上的协调，按照一定的规则或者时序来共享系统资源，从而使程序的执行具有可再现性。</h2>
-        
-          <a class="article-more-a" href="/2020/11/04/2-4-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">进程同步</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/11/04/2-4-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-进程同步-临界资源的分配算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/28/%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5-%E4%B8%B4%E7%95%8C%E8%B5%84%E6%BA%90%E7%9A%84%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95/">进程同步_临界资源的分配算法</a>
-    </h1>
   
 
-        
-        <a href="/2020/10/28/%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5-%E4%B8%B4%E7%95%8C%E8%B5%84%E6%BA%90%E7%9A%84%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-10-28T06:21:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="生产者-消费者问题"><a href="#生产者-消费者问题" class="headerlink" title="生产者-消费者问题"></a>生产者-消费者问题</h2><p>描述的是：<br>一群生产者进程生产产品，并且将这些产品将提供给消费者进程消费。为了使生产者进程和消费者进程能并发执行，在两者之间设置了一个具有 n 个缓冲区的缓冲池。<br>缓冲池就是给来平衡生产和消费进程之间的同步问题。保证不过度生成和过度消费。</p>
-        
-          <a class="article-more-a" href="/2020/10/28/%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5-%E4%B8%B4%E7%95%8C%E8%B5%84%E6%BA%90%E7%9A%84%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">进程</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">临界资源</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/28/%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5-%E4%B8%B4%E7%95%8C%E8%B5%84%E6%BA%90%E7%9A%84%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-XSS-Lab刷题笔记-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/07/XSS-Lab%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0-2/">XSS_Lab刷题笔记-2</a>
-    </h1>
   
 
-        
-        <a href="/2020/10/07/XSS-Lab%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0-2/" class="archive-article-date">
-  	<time datetime="2020-10-07T05:46:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="XSS-Lab-Day02"><a href="#XSS-Lab-Day02" class="headerlink" title="XSS Lab - Day02"></a>XSS Lab - Day02</h2><hr>
-<h3 id="0x00-level-10"><a href="#0x00-level-10" class="headerlink" title="0x00 level-10"></a>0x00 level-10</h3><p>看源码，挨个试试看有没有注入点。</p>
-<p>Payload:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">level10.php?t_link&#x3D;qqq&amp;t_history&#x3D;aaa&amp;t_sort&#x3D;sss</span><br></pre></td></tr></table></figure>
-
-<p>发现只有一个注入点。</p>
-        
-          <a class="article-more-a" href="/2020/10/07/XSS-Lab%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0-2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ctf-wp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">XSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/codes//" class="article-tag-list-link color1">codes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/07/XSS-Lab%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0-2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-XSS-Lab刷题笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/01/XSS-Lab%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">XSS-Lab刷题笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2020/10/01/XSS-Lab%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2020-10-01T15:09:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="XSS-Lab刷题笔记"><a href="#XSS-Lab刷题笔记" class="headerlink" title="XSS-Lab刷题笔记"></a>XSS-Lab刷题笔记</h2><p>靶场：<a target="_blank" rel="noopener" href="https://buuoj.cn/challenges">BUUCTF上的XSS-Lab</a></p>
-<hr>
-<h3 id="XSS原理"><a href="#XSS原理" class="headerlink" title="XSS原理"></a>XSS原理</h3><p>XSS通常指黑客通过“HTML注入”篡改网页，插入了恶意的脚本，从而在用户游览网页的时候控制用户游览器的一种攻击。<br>XSS又分为反射型、储存型和DOM Based</p>
-        
-          <a class="article-more-a" href="/2020/10/01/XSS-Lab%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ctf-wp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">XSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/codes//" class="article-tag-list-link color1">codes</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/01/XSS-Lab%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-bugkuctf-江湖老魔-wp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/27/bugkuctf-%E6%B1%9F%E6%B9%96%E8%80%81%E9%AD%94-wp/">bugkuctf-江湖老魔-wp</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/27/bugkuctf-%E6%B1%9F%E6%B9%96%E8%80%81%E9%AD%94-wp/" class="archive-article-date">
-  	<time datetime="2020-09-27T09:52:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="bugkuctf-江湖魔头-js代码审计"><a href="#bugkuctf-江湖魔头-js代码审计" class="headerlink" title="bugkuctf - 江湖魔头 - js代码审计"></a>bugkuctf - 江湖魔头 - js代码审计</h2><p>靶场地址：<a target="_blank" rel="noopener" href="http://123.206.31.85:1616/">江湖魔头</a></p>
-<p>   先收集信息，一款江湖类的小游戏，通过修行打败最后的boss就过关。<br> 按照正常的游戏规则在比赛前是不能修炼到如来神掌的~所以就要做外挂，直接开局就有钱学如来神掌。</p>
-        
-          <a class="article-more-a" href="/2020/09/27/bugkuctf-%E6%B1%9F%E6%B9%96%E8%80%81%E9%AD%94-wp/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ctf-wp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/code//" class="article-tag-list-link color5">code</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/27/bugkuctf-%E6%B1%9F%E6%B9%96%E8%80%81%E9%AD%94-wp/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -797,8 +427,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
