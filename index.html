@@ -162,6 +162,194 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-php7-segment-fault特性上传木马-文件包含" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/18/php7-segment-fault%E7%89%B9%E6%80%A7%E4%B8%8A%E4%BC%A0%E6%9C%A8%E9%A9%AC-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">php7 segment fault特性上传木马 + 文件包含</a>
+    </h1>
+  
+
+        
+        <a href="/2020/11/18/php7-segment-fault%E7%89%B9%E6%80%A7%E4%B8%8A%E4%BC%A0%E6%9C%A8%E9%A9%AC-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" class="archive-article-date">
+  	<time datetime="2020-11-18T03:27:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="NPUCTF2020-ezinclude"><a href="#NPUCTF2020-ezinclude" class="headerlink" title="[NPUCTF2020]ezinclude"></a>[NPUCTF2020]ezinclude</h2><h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>根据源码提示，然后响应头有一个Cookie</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--md5(<span class="variable">$secret</span>.<span class="variable">$name</span>)===<span class="variable">$pass</span> --&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hash=fa25e54758d5d5c1927781a6ede89f8a</span><br></pre></td></tr></table></figure>
+
+<p>GET请求方式传入pass参数的值为响应包里面的hash值</p>
+<p><img src="https://img-blog.csdnimg.cn/20201118115249836.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lJSEFIVUhB,size_16,color_FFFFFF,t_70#pic_center"></p>
+<p>游览器访问 flflflflag.php 会显示 404 。伪协议读源码发现有 js 跳转到 404。用burp。</p>
+        
+          <a class="article-more-a" href="/2020/11/18/php7-segment-fault%E7%89%B9%E6%80%A7%E4%B8%8A%E4%BC%A0%E6%9C%A8%E9%A9%AC-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ctf-wp</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">upload</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">文件包含</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/11/18/php7-segment-fault%E7%89%B9%E6%80%A7%E4%B8%8A%E4%BC%A0%E6%9C%A8%E9%A9%AC-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-php-filter的新姿势" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/18/php-filter%E7%9A%84%E6%96%B0%E5%A7%BF%E5%8A%BF/">php://filter的新姿势</a>
+    </h1>
+  
+
+        
+        <a href="/2020/11/18/php-filter%E7%9A%84%E6%96%B0%E5%A7%BF%E5%8A%BF/" class="archive-article-date">
+  	<time datetime="2020-11-18T03:26:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="BSidesCF-2020-Had-a-bad-day"><a href="#BSidesCF-2020-Had-a-bad-day" class="headerlink" title="[BSidesCF 2020]Had a bad day"></a>[BSidesCF 2020]Had a bad day</h2><h3 id="目录穿越"><a href="#目录穿越" class="headerlink" title="目录穿越"></a>目录穿越</h3><p>url可以包含文件，因为会自己加上.php的后缀，所以就只能包含 xxx.php 文件。先把可以读取的都看一遍。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/index.php?category=php://filter/<span class="built_in">read</span>=convert.base64-encode/resource=xxx</span><br></pre></td></tr></table></figure>
+
+<p>分析源码：</p>
+<blockquote>
+<p>$_GET[‘category’]参数里里面必须带有 woofers ，meowers或者 index 找找flag的位置~~<br>正好利用include()可以目录穿越，带上woofers ，meowers或者 index</p>
+</blockquote>
+<p>找flag文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/index.php?category=woofers/../flag</span><br></pre></td></tr></table></figure>
+<p>然后伪协议读源码就可以拿到flag</p>
+<h3 id="php-filter伪协议的新姿势"><a href="#php-filter伪协议的新姿势" class="headerlink" title="php://filter伪协议的新姿势"></a>php://filter伪协议的新姿势</h3><p><code>php://filter伪协议</code>里面可以加上一个woofers ，meowers或者 index</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/index.php?category=php://filter/<span class="built_in">read</span>=convert.base64-encode/woofers/resource=flag</span><br></pre></td></tr></table></figure>
+
+<p>看看返回信息</p>
+<p><img src="https://img-blog.csdnimg.cn/20201118122509610.png#pic_center"></p>
+<p>先是无法找到 过滤器 <code>/woofers</code> 的位置<br>然后无法创建 过滤器 <code>/woofers</code> ，然后跳过这一个过滤器。<br>会报错但是还会继续运行。。可能也就是一个警告型的错误。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ctf-wp</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">文件包含</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">伪协议</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/11/18/php-filter%E7%9A%84%E6%96%B0%E5%A7%BF%E5%8A%BF/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-RoarCTF-2019-Simple-Upload" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -984,6 +1172,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">upload</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件包含</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">伪协议</a>
               </li>
             
             <div class="clearfix"></div>
