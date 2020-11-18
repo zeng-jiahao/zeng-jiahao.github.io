@@ -273,7 +273,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="BSidesCF-2020-Had-a-bad-day"><a href="#BSidesCF-2020-Had-a-bad-day" class="headerlink" title="[BSidesCF 2020]Had a bad day"></a>[BSidesCF 2020]Had a bad day</h2><h3 id="目录穿越"><a href="#目录穿越" class="headerlink" title="目录穿越"></a>目录穿越</h3><p>url可以包含文件，因为会自己加上.php的后缀，所以就只能包含 xxx.php 文件。先把可以读取的都看一遍。</p>
+        <h2 id="BSidesCF-2020-Had-a-bad-day"><a href="#BSidesCF-2020-Had-a-bad-day" class="headerlink" title="[BSidesCF 2020]Had a bad day"></a>[BSidesCF 2020]Had a bad day</h2><h3 id="目录穿越"><a href="#目录穿越" class="headerlink" title="目录穿越"></a>目录穿越</h3><p>url可以包含文件，因为会自己加上.php的后缀，所以就只能包含xxx.php文件。先把可以读取的都看一遍。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/index.php?category=php://filter/<span class="built_in">read</span>=convert.base64-encode/resource=xxx</span><br></pre></td></tr></table></figure>
 
 <p>分析源码：</p>
@@ -282,14 +282,9 @@
 </blockquote>
 <p>找flag文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/index.php?category=woofers/../flag</span><br></pre></td></tr></table></figure>
-<p>然后伪协议读源码就可以拿到flag</p>
-<h3 id="php-filter伪协议的新姿势"><a href="#php-filter伪协议的新姿势" class="headerlink" title="php://filter伪协议的新姿势"></a>php://filter伪协议的新姿势</h3><p><code>php://filter伪协议</code>里面可以加上一个woofers ，meowers或者 index</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/index.php?category=php://filter/<span class="built_in">read</span>=convert.base64-encode/woofers/resource=flag</span><br></pre></td></tr></table></figure>
-
-<p>看看返回信息</p>
-<p><img src="https://img-blog.csdnimg.cn/20201118122509610.png#pic_center"></p>
-<p>先是无法找到 过滤器 <code>/woofers</code> 的位置<br>然后无法创建 过滤器 <code>/woofers</code> ，然后跳过这一个过滤器。<br>会报错但是还会继续运行。。可能也就是一个警告型的错误。</p>
-
+        
+          <a class="article-more-a" href="/2020/11/18/php-filter%E7%9A%84%E6%96%B0%E5%A7%BF%E5%8A%BF/#more">more >></a>
+        
       
 
       
